@@ -1,5 +1,5 @@
 /* Google fonts import */
-@import url();
+
 
 body {
   min-height: 100vh;
@@ -10,12 +10,14 @@ body {
 
 /* General styles */
 :root {
-  --primary-font: , sans-serif;
-  --secondary-font: , sans-serif;
+  --primary-font: "Inter", system-ui, sans-serif;
+  --secondary-font: "Nunito", system-ui, sans-serif;
+  /* TODO(team): define colors
   --primary-color: ;
-  --secondary-color: ; 
-  --highlight-color: ; 
-  --text-color: ; 
+  --secondary-color: ;
+  --highlight-color: ;
+  */
+  --text-color: #3a3a3a;
 }
 
 /*main styles*/
@@ -227,4 +229,33 @@ main {
         flex-wrap: wrap;
         font-size: 1.5rem;
     }
+}.hero-section {
+    background-image: url('../images/hero_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+}
+
+.input-narrow {
+    max-width: 220px;
+}
+
+.quiz-input::placeholder {
+    color: #fff;
+    opacity: 0.8;
+}
+
+
+.hero-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.65));
+    pointer-events: none;
+}
+
+.hero-subtitle {
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+    font-size: 2rem;
+    font-weight: bold;
 }
