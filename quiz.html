@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Quiz Website – Your go-to platform for fun and interactive quizzes. Challenge yourself with a variety of questions and test your knowledge." />
-    <meta name="keywords" content="Quiz, Game, Fun, Interactive, Questions, Answers, Play, Score, Challenge" />
+    <meta
+      name="description"
+      content="Quiz Website – Your go-to platform for fun and interactive quizzes. Challenge yourself with a variety of questions and test your knowledge."
+    />
+    <meta
+      name="keywords"
+      content="Quiz, Game, Fun, Interactive, Questions, Answers, Play, Score, Challenge"
+    />
     <title>Quiz Website | Questions</title>
 
     <!--Favicons-->
@@ -14,66 +18,104 @@
     <!-- Google Fonts -->
 
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <!--Css Link-->
     <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
+  </head>
 
-<body>
+  <body>
+   
     <main>
-        <section class="quiz-section col-12">
-            <div id="quiz-body" class="container-fluid">
-                <!-- Quiz Header -->
-                <div class="quiz-header d-flex justify-content-center align-items-center">
-                    <h1 class="quiz-title text-center">Quiz Round</h1>
-                </div>
-                <!-- Quiz Score and Timer -->
-                <div class="quiz-score-container d-flex justify-content-center align-items-center">
-                    <!-- Quiz Timer -->
-                    <div class="quiz-timer flex justify-content-center text-center col-6">
-                        <i class="fa-solid fa-stopwatch"></i>&nbsp;Time Left:&nbsp;<span id="timer"></span>
-                    </div>
-                    <!-- Quiz Score -->
-                    <div class="quiz-score flex justify-content-center text-center col-6">
-                        Score:&nbsp;<span id="correct-score"></span>/
-                    </div>
-                </div>
-                <!-- Question Number -->
-                <div class="quiz-score flex justify-content-center text-center col-12">
-                    <h1>Question Number:&nbsp; <span id="total-question"></span></h1>
-                </div>
-                <!-- Quiz Body -->
-                <div id="quiz-body" class="quiz-body justify-content-center text-center">
-                    <!--Question-->
-                    <h2 class="quiz-question" id="question">Question 1:</h2>
-                    <!--Multiple Choice Options-->
-                    <ul class="quiz-options" id="quiz-options">
-                        <li class="quiz-option" id="option1">Option 1</li>
-                        <li class="quiz-option" id="option2">Option 2</li>
-                        <li class="quiz-option" id="option3">Option 3</li>
-                        <li class="quiz-option" id="option4">Option 4</li>
-                    </ul>
-                    <!--Answer Display-->
-                </div>
-                <div id="answer" class="quiz-answer d-flex justify-content-center align-items-center">
-                    Answer: <span id="answer-text"></span>
-                        </div>
-        </section>
-    </main>
-    <!-- Quiz Footer -->
-    <!--Options-->
-    <footer class="quiz-footer">
-        <div class="quiz-foot col-12 d-flex justify-content-center align-items-center">
-            <button type="button" id="check-answer" class="btn btn-lg">Check Answer</button>
-            <button type="button" id="next-question" class="btn btn-lg">Next Question</button>
-            <button type="button" id="play-again" class="btn btn-lg">Play Again</button>
+      <section class="quiz-section col-12">
+         <div class="container">
+      <!-- Header -->
+      <div class="quiz-header d-flex justify-content-center align-items-center">
+        <h1 class="quiz-title text-center">Quiz Round</h1>
+      </div>
+    </div>
+        <div id="quiz-results" class="quiz-results col-12">
+          <!-- Quiz Score and Timer -->
+          <div
+            id="quiz-score-container"
+            class="d-flex justify-content-center align-items-center"
+          >
+            <!-- Quiz Timer -->
+            <div
+              id="quiz-timer"
+              class="flex justify-content-center text-center col-6"
+            >
+              <i class="fa-solid fa-stopwatch"></i>&nbsp;Time Left:&nbsp;<span
+                id="timer"
+              >60</span>
+            </div>
+            <!-- Quiz Score -->
+            <div
+              id="quiz-score"
+              class="flex justify-content-center text-center col-6"
+            >
+              Score:&nbsp;<span id="correct-score"></span>/
+            </div>
+          </div>
         </div>
-    </footer>
+        <!-- Category -->
+        <div id="quiz-category" class="quiz-category flex justify-content-center text-center col-12">
+          Category: <span id="category-name"></span>
+        </div>
+        <!-- Question Number -->
+        <div id="question-number" class="question-number flex justify-content-center text-center col-12">
+          <h1>Question 1 of ?&nbsp; <span id="total-question"></span></h1>
+        </div>
+        <!-- Quiz Body -->
+        <div
+          id="quiz-body"
+          class="quiz-body justify-content-center text-center"
+        >
+          <!--Question-->
+          <h2 class="quiz-question" id="question">Question 1:</h2>
+          <!--Multiple Choice Options-->
+          <ul class="quiz-options" id="quiz-options">
+            <li class="quiz-option" id="option1">Option 1</li>
+            <li class="quiz-option" id="option2">Option 2</li>
+            <li class="quiz-option" id="option3">Option 3</li>
+            <li class="quiz-option" id="option4">Option 4</li>
+          </ul>
+          <!--Answer Display-->
+        </div>
+        <div
+          id="answer"
+          class="quiz-answer d-flex justify-content-center align-items-center"
+        >
+          Answer: <span id="answer-text"></span>
+        </div>
+        <!-- Quiz Footer -->
+        <!--Options-->
+        <div
+          class="quiz-footer col-12 d-flex justify-content-center align-items-center"
+        >
+          <button type="button" id="check-answer" class="btn btn-lg">
+            Check Answer
+          </button>
+          <button type="button" id="next-question" class="btn btn-lg">
+            Next Question
+          </button>
+          <button type="button" id="play-again" class="btn btn-lg">
+            Play Again
+          </button>
+        </div>
+      </section>
+    </main>
 
     <!-- JavaScript Link-->
     <script src="assets/scripts/script.js"></script>
@@ -87,5 +129,4 @@
     <script src="https://kit.fontawesome.com/aa9af45995.js" crossorigin="anonymous"></script>
     <script src="assets/scripts/game.js"></script>
 </body>
-
 </html>
