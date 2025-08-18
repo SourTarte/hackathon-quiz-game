@@ -3,6 +3,25 @@ const triviaCategory = document.getElementById('trivia-category');
 const triviaDifficulty = document.getElementById('trivia-difficulty');
 const triviaType = document.getElementById('trivia-type');
 
+// Handle username form submission
+document.getElementById('startGameForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    
+    if (username.length < 3) {
+        alert('Please enter a username with at least 3 characters.');
+        return;
+    }
+    
+    // Store username in session storage
+    sessionStorage.setItem('username', username);
+    
+    // Show modal or redirect directly to quiz with default settings
+    const modal = document.getElementById('quizConfigModal');
+    const bootstrapModal = new bootstrap.Modal(modal);
+    bootstrapModal.show();
+});
+
 document.getElementById('playButton').addEventListener('click', function (event) {
     event.preventDefault();
     setConfig(questionCount.value, triviaCategory.value, triviaDifficulty.value, triviaType.value);
