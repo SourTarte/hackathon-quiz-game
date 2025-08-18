@@ -40,6 +40,12 @@ main {
     padding: 10rem 0.1rem 2rem 0.1rem;
 }
 
+/* username input field */
+
+#username {
+    font-size: 1rem;
+}
+
 /* Quiz Section */
 .quiz-section {
     background-color: var(--highlight-color-light);
