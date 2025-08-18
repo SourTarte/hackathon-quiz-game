@@ -165,8 +165,9 @@ main {
 
 /* Answer Display */
 .quiz-answer {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
     color: #2c3e50;
 }
 
