@@ -29,10 +29,21 @@ main {
     min-height: auto; /* Let content determine height */
 }
 
-/* modal */
+/* nav bar */
 
+.navbar {
+    height: 105px;
+}
+
+/* modal */
 #quizConfigModal {
     padding: 10rem 0.1rem 2rem 0.1rem;
+}
+
+/* username input field */
+
+#username {
+    font-size: 1rem;
 }
 
 /* Quiz Section */
@@ -154,8 +165,9 @@ main {
 
 /* Answer Display */
 .quiz-answer {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
     color: #2c3e50;
 }
 
