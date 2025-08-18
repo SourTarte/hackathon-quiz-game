@@ -32,6 +32,10 @@ let score = 0;
 document.addEventListener("DOMContentLoaded", (event) => {
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
+    // call the check answer function when user clicks the check answer btn
+    document
+        .querySelector("#check-button")
+        .addEventListener("click", checkAnswer);
 });
 
 /**
