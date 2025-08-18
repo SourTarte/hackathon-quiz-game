@@ -1,6 +1,5 @@
 /* Google fonts import */
 
-
 body {
   height: 100vh;
   display: flex;
@@ -12,12 +11,12 @@ body {
 :root {
   --primary-font: "Inter", system-ui, sans-serif;
   --secondary-font: "Nunito", system-ui, sans-serif;
-  /* TODO(team): define colors*/
-  --primary-color: #7EBDC2 ;
-  --secondary-color: #BB4430 ;
-  --highlight-color: #F3DFA2 ;
-  --highlight-color-light: #EFE6DD ;
-  --text-color: #231F20;
+  /* TODO(team): define colors
+  --primary-color: ;
+  --secondary-color: ;
+  --highlight-color: ;
+  */
+  --text-color: #3a3a3a;
 }
 
 /*main styles*/
@@ -50,11 +49,11 @@ main {
 
 /* Score and Timer */
 #quiz-score-container {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 #quiz-timer, #quiz-score {
@@ -65,7 +64,7 @@ main {
 }
 
 #quiz-score {
-  min-height: 75px;
+    min-height: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,18 +97,39 @@ main {
 
 /* Options */
 .quiz-options {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
 }
 
 .quiz-option {
-  background-color: var(--highlight-color);
-  margin: 0.5rem 0;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: #e0e0e0;
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.quiz-option.selected {
+    background-color: #3498db;
+    color: white;
+}
+
+.quiz-option.correct {
+    background-color: #27ae60;
+    color: white;
+}
+
+.quiz-option.incorrect {
+    color: white;
+    background-color: var(--highlight-color);
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .quiz-option:hover {
@@ -120,32 +140,33 @@ main {
 
 /* Answer Display */
 .quiz-answer {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
 }
 
 /* Footer Buttons */
 .quiz-footer {
-  gap: 1rem;
-  flex-wrap: wrap;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .quiz-footer .btn {
-  background-color: var(--secondary-color);
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .quiz-footer .btn:hover {
-  background-color: var(--primary-color);
-  color: var(--text-color);
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
+
 
 /* medium devices (tablet, 320px and up) */
 @media screen and (min-width: 320px) {
@@ -166,40 +187,41 @@ main {
 /* medium devices (tablet, 768px and up) */
 @media screen and (min-width: 768px) {
     .quiz-section {
-    padding: 3rem;
-    max-width: 900px;
-    height: 95vh;
-    margin-top: 10px;
-  }
-  /* Make the quiz score and timer the same height for consistency */
-  #quiz-score {
-    min-height: auto;
-  }
-  .quiz-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-  }
-  #quiz-timer, #quiz-score {
-    font-size: 1.5rem;
-    padding: 1rem;
-  }
-  .quiz-options {
-    display: flex;
-    flex-direction: column;
-  }
+        padding: 3rem;
+        max-width: 900px;
+        height: 95vh;
+        margin-top: 10px;
+    }
+    /* Make the quiz score and timer the same height for consistency */
+    #quiz-score {
+        min-height: auto;
+    }
+    .quiz-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    #quiz-timer,
+    #quiz-score {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+    .quiz-options {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* laptop devices (laptop, 1024px and up) */
 @media screen and (min-width: 1024px) {
     .quiz-section {
-      padding: 4rem;
-      max-width: 1000px;
-      height: 95vh;
-      margin-top: 10px;
+        padding: 4rem;
+        max-width: 1000px;
+        height: 95vh;
+        margin-top: 10px;
     }
-  }
+}
 
-  /* Large laptop devices (large laptop, 1440px and up) */
+/* Large devices (large laptop, 1440px and up) */
 @media screen and (min-width: 1440px) {
     .quiz-section {
         padding: 5rem;
@@ -210,7 +232,48 @@ main {
         margin-left: 95px;
     }
   
-}.hero-section {
+    .quiz-header h1 {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+    }
+    #quiz-timer,
+    #quiz-score {
+        font-size: 1.5rem;
+        padding: 1rem;
+        margin-bottom: 3rem;
+    }
+    .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    #quiz-category {
+        font-size: 1.5rem;
+        padding: 0.75rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+    #question-number h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    #quiz-body {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    #answer-display {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    .quiz-footer {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        font-size: 1.5rem;
+    }
+}
+
+.hero-section {
     background-image: url('../images/hero_background.png');
     background-size: cover;
     background-position: center;
@@ -228,15 +291,18 @@ main {
     opacity: 0.8;
 }
 
-
 .hero-overlay {
-    background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.65));
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.65)
+    );
     pointer-events: none;
 }
 
 .hero-subtitle {
     color: #fff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
     font-size: 2rem;
     font-weight: bold;
 }
