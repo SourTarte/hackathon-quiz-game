@@ -117,6 +117,21 @@ main {
   background-color: #d0d0d0;
 }
 
+.quiz-option.selected {
+    background-color: #3498db;
+    color: white;
+}
+
+.quiz-option.correct {
+    background-color: #27ae60;
+    color: white;
+}
+
+.quiz-option.incorrect {
+    background-color: #e74c3c;
+    color: white;
+}
+
 /* Answer Display */
 .quiz-answer {
   font-size: 1.1rem;
