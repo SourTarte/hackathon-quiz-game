@@ -1,51 +1,50 @@
 /* Google fonts import */
 
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    color: #3a3a3a;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
 }
 
 /* General styles */
 :root {
-    --primary-font: "Inter", system-ui, sans-serif;
-    --secondary-font: "Nunito", system-ui, sans-serif;
-    /* TODO(team): define colors
+  --primary-font: "Inter", system-ui, sans-serif;
+  --secondary-font: "Nunito", system-ui, sans-serif;
+  /* TODO(team): define colors
   --primary-color: ;
   --secondary-color: ;
   --highlight-color: ;
   */
-    --text-color: #3a3a3a;
+  --text-color: #3a3a3a;
 }
 
 /*main styles*/
 main {
-    background-color: #f0f00b;
-    /* make element fill the remaining space */
-    flex: 1 0 auto;
-    margin: 0;
-    padding: 1rem;
-    min-height: auto; /* Let content determine height */
+  background-color: var(--primary-color);
+  /* make element fill the remaining space */
+  flex: 1 0 auto;
+  margin: 0;
+  padding: 1rem;
+  min-height: auto; /* Let content determine height */
 }
 
 /* Quiz Section */
 .quiz-section {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    max-width: 800px;
-    margin: 1;
-    height: 95vh; /* Set a fixed height for the quiz section */
+  background-color: var(--highlight-color-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 1;
+  height: 95vh; /* Set a fixed height for the quiz section */
 }
 
 /* Header */
 .quiz-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
 /* Score and Timer */
@@ -57,12 +56,11 @@ main {
     font-weight: 600;
 }
 
-#quiz-timer,
-#quiz-score {
-    background-color: #e0f7fa;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    margin: 0.5rem;
+#quiz-timer, #quiz-score {
+  background-color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin: 0.5rem;
 }
 
 #quiz-score {
@@ -74,27 +72,27 @@ main {
 
 /* Category */
 #quiz-category {
-    background-color: #2980b9;
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    color: #fff;
-    border-radius: 8px;
+  background-color: var(--secondary-color);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #fff;
+  border-radius: 8px;
 }
 
 /* Question Number */
 #question-number h1 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: #444;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
 /* Question */
 .quiz-question {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 /* Options */
@@ -113,9 +111,6 @@ main {
     transition: background-color 0.3s ease;
 }
 
-.quiz-option:hover {
-    background-color: #d0d0d0;
-}
 
 .quiz-option.selected {
     background-color: #3498db;
@@ -128,8 +123,19 @@ main {
 }
 
 .quiz-option.incorrect {
-    background-color: #e74c3c;
     color: white;
+    background-color: var(--highlight-color);
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-option:hover {
+  background-color: var(--primary-color);
+  border-width: 2px;
+  border-color: var(--secondary-color);
 }
 
 /* Answer Display */
@@ -146,7 +152,7 @@ main {
 }
 
 .quiz-footer .btn {
-    background-color: #3498db;
+    background-color: var(--secondary-color);
     color: #fff;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -157,10 +163,28 @@ main {
 }
 
 .quiz-footer .btn:hover {
-    background-color: #2980b9;
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
-/* Large devices (tablet, 768px and up) */
+
+/* medium devices (tablet, 320px and up) */
+@media screen and (min-width: 320px) {
+    .quiz-section {
+        height: auto;
+    }
+
+    /* Make the quiz score and timer the same height for consistency */
+  #quiz-score {
+    min-height: 103px;
+  }
+  .quiz-footer .btn {
+    font-size: .8rem;
+
+  }
+}
+
+/* medium devices (tablet, 768px and up) */
 @media screen and (min-width: 768px) {
     .quiz-section {
         padding: 3rem;
@@ -187,7 +211,7 @@ main {
     }
 }
 
-/* Large devices (laptop, 1024px and up) */
+/* laptop devices (laptop, 1024px and up) */
 @media screen and (min-width: 1024px) {
     .quiz-section {
         padding: 4rem;
@@ -201,12 +225,13 @@ main {
 @media screen and (min-width: 1440px) {
     .quiz-section {
         padding: 5rem;
-        max-width: 1200px;
+        max-width: 85vw;
         height: 95vh;
         margin-top: 10px;
         align-items: center;
         margin-left: 95px;
     }
+  
     .quiz-header h1 {
         font-size: 3rem;
         margin-bottom: 3rem;
@@ -247,8 +272,9 @@ main {
         font-size: 1.5rem;
     }
 }
+
 .hero-section {
-    background-image: url("../images/hero_background.png");
+    background-image: url('../images/hero_background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
