@@ -96,7 +96,12 @@
               >
             </div>
             <div class="col-4 col-sm-3 col-md-3 col-lg-2 d-grid">
-              <button type="submit" id="startGameBtn" class="btn btn-warning btn-lg rounded-pill w-100">
+              <!-- <button type="submit" id="startGameBtn" class="btn btn-warning btn-lg rounded-pill w-100">
+                Start
+              </button> -->
+
+              <!-- Button trigger modal -->
+              <button type="button" id="startGameBtn" class="btn btn-warning btn-lg rounded-pill w-100" data-bs-toggle="modal" data-bs-target="#quizConfigModal">
                 Start
               </button>
             </div>
@@ -141,12 +146,7 @@
       </section>
       <!-- Modal -->
        <section>
-         <div class="container text-center align-self-center">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quizConfigModal">
-            Launch demo modal
-            </button>
-        </div>
+          
 
             <!-- Modal -->
             <div class="modal fade" id="quizConfigModal" tabindex="-1" aria-labelledby="quizConfigModalLabel" aria-hidden="true">
@@ -159,7 +159,7 @@
                     <div class="modal-body">
                         <form>
                         <div class="mb-3">
-                            <label for="trivia-category">Choose Your Difficulty: </label>
+                            <label for="trivia-category"><strong>Choose Your Difficulty:<strong> </label>
                             <select id="trivia-difficulty" name="trivia-difficulty" class="form-control">
                                 <option selected>Choose your Difficulty</option>
                                 <option value="any" selected>Any Difficulty</option>
@@ -169,7 +169,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="trivia-category">Choose Your Category: </label>
+                            <label for="trivia-category"><strong>Choose Your Category:<strong> </label>
                             <select id="trivia-category" name="trivia-category" class="form-control">
                                 <option value="any" selected>Any Category</option>
                                 <option value="27">Animals</option>
@@ -199,7 +199,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="trivia-category">Choose Your Questions: </label>
+                            <label for="trivia-category"><strong>Choose Your Questions:<strong> </label>
                             <select id="trivia-type" name="trivia-type" class="form-control">
                                 <option value="any" selected>Any Type</option>
                                 <option value="multiple">Multiple Choice</option>
@@ -207,7 +207,7 @@
                             </select>
                         </div>
                         <div>
-                            <label for="question-amount">Choose Quiz Length: </label>
+                            <label for="question-amount"><strong>Choose Quiz Length:</strong></label>
                             <select id="question-amount" name="question-amount" class="form-control">
                                 <option value="5" selected>5 Questions</option>
                                 <option value="10">10 Questions</option>
@@ -218,8 +218,8 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a id="playButton" href="quiz.html" class="btn btn-primary" >Play!</a>
+                        <button type="button" class="btn btn-secondary btn-lg rounded-pill w-100y" data-bs-dismiss="modal">Close</button>
+                        <a id="playButton" href="quiz.html" class="btn btn-warning btn-lg rounded-pill w-100y" >Play!</a>
                     </div>
                 </div>
             </div>
