@@ -39,6 +39,14 @@ main {
   height: 95vh; /* Set a fixed height for the quiz section */
 }
 
+/*results page styles*/
+.quiz-results {
+  background-color: var(--highlight-color-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 1;
+}
 /* Header */
 .quiz-header h1 {
   font-size: 2.5rem;
@@ -168,16 +176,25 @@ main {
     color: var(--text-color);
 }
 
+#result-body {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
 
 /* medium devices (tablet, 320px and up) */
 @media screen and (min-width: 320px) {
   .quiz-section {
     height: auto;
   }
+  .quiz-results{
+    margin-top: 160px;
+  }
 
   /* Make the quiz score and timer the same height for consistency */
   #quiz-score {
-    min-height: 103px;
+    min-height: 75px;
   }
   .quiz-footer .btn {
     font-size: 0.8rem;
