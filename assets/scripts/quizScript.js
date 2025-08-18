@@ -1,23 +1,32 @@
 // Api url components
-let category = '';
-let difficulty = '';
-let type = '';
-let questionCount = '';
+let category = "";
+let difficulty = "";
+let type = "";
+let questionCount = "";
 
 //Grabs the category, difficulty and type from sessionStorage.
-let config = getConfig(); 
+let config = getConfig();
 
 //if there isn't a <Insert Variable>, the value is ''.
-category = config.category === 'any' ? (category = '') : (category = `&category=${config.category}`); 
-difficulty = config.difficulty === 'any' ? (difficulty = '') : (difficulty = `&difficulty=${config.difficulty}`);
-type = config.type === 'any' ? (type = '') : (type = `&type=${config.type}`);
-questionCount = config.questionCount === '5' ? (questionCount = '') : (questionCount = `&type=${config.questionCount}`)
+category =
+    config.category === "any"
+        ? (category = "")
+        : (category = `&category=${config.category}`);
+difficulty =
+    config.difficulty === "any"
+        ? (difficulty = "")
+        : (difficulty = `&difficulty=${config.difficulty}`);
+type = config.type === "any" ? (type = "") : (type = `&type=${config.type}`);
+questionCount =
+    config.questionCount === "5"
+        ? (questionCount = "")
+        : (questionCount = `&type=${config.questionCount}`);
 
 //game dependent variables
 let selectedAnswer;
 let correctAnswer;
 let totalQuestionsAsked = 0;
-let totalQuestionAmount = sessionStorage.getItem('questionCount');
+let totalQuestionAmount = sessionStorage.getItem("questionCount");
 let score = 0;
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -28,10 +37,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
  * Uses the trivia DB's API to spit back questions.
  * Sends a fetch request using APIUrl, then
  * receives the result as a new variable, data.
-*/
+ */
 async function loadQuestion() {
-    const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`; 
-    const result = await fetch(`${APIUrl}`); 
+    const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
+    const result = await fetch(`${APIUrl}`);
     const data = await result.json();
     console.log(data.results[0]);
     displayQuestion(data.results[0]);
@@ -39,19 +48,25 @@ async function loadQuestion() {
 
 function displayQuestion(data) {
     ++totalQuestionsAsked;
-    document.getElementById("question-number").innerHTML = `Question ${totalQuestionsAsked} of ${totalQuestionAmount}`;
+    document.getElementById(
+        "question-number"
+    ).innerHTML = `Question ${totalQuestionsAsked} of ${totalQuestionAmount}`;
 
     correctAnswer = data.correct_answer;
     let allAnswers = data.incorrect_answers;
-    allAnswers.splice((Math.random() * data.incorrect_answers.length), 0, data.correct_answer);
-    
+    allAnswers.splice(
+        Math.random() * data.incorrect_answers.length,
+        0,
+        data.correct_answer
+    );
+
     //gets and sets the html of the question text
     let questionTextElement = document.getElementById("question");
     questionTextElement.innerHTML = data.question;
 
     let optionButtons = document.getElementById("quiz-options").children;
-    for(let i = 0; i <= optionButtons.length; i++) {
-        if(allAnswers[i] === undefined) {
+    for (let i = 0; i <= optionButtons.length; i++) {
+        if (allAnswers[i] === undefined) {
             optionButtons[i].hidden = true;
         } else {
             optionButtons[i].innerHTML = allAnswers[i];
@@ -79,16 +94,14 @@ function checkAnswer() {
 
 // Update counters and disable options
 function updateScoreDisplay(score, totalQuestionAmount) {
-    const scoreElement = document.getElementById('correct-score');
+    const scoreElement = document.getElementById("correct-score");
 
     // Update the visible score
     resultElement.innerHTML = `${score}/${totalQuestionAmount}`;
 }
 
 function checkGameEnd() {
-
-    if(totalQuestionsAsked === totalQuestionAmount) {
-        
+    if (totalQuestionsAsked === totalQuestionAmount) {
     }
     /* 
     1. if totalQuestionsAsked === gameLength, end the game
@@ -96,44 +109,51 @@ function checkGameEnd() {
     */
 }
 
-function selectOption(optionId) {
-    /* 
-    1. get the group of the 4 buttons
-    2. get the innerText of button with optionId
-    3. set selectedAnswer to that innertext
-    4. find button with class 'selected' and remove it
-    5. add class 'selected' to new option 
-    */
+function selectOption() {
+    // get reference to the container element that holds all quiz option list items
+    const optionsElement = document.getElementById("quiz-options");
+
+    // find all <li> elements inside the options container and loop through each one
+    optionsElement.querySelectorAll("li").forEach(function (option) {
+        // attach a click event listener to each individual option
+        option.addEventListener("click", function () {
+            // check if any option currently has the 'selected' class
+            if (optionsElement.querySelector(".selected")) {
+                // Find the currently selected option element
+                const activeOption = optionsElement.querySelector(".selected");
+
+                // Remove the 'selected' class from the previously selected option
+                activeOption.classList.remove("selected");
+            }
+
+            // Add the 'selected' class to the option that was just clicked
+            option.classList.add("selected");
+        });
+    });
 }
-        
+
 // to convert html entities into normal text of correct answer if there is any
 function HTMLToString(textString) {
-    let doc = new DOMParser().parseFromString(textString, 'text/html');
+    let doc = new DOMParser().parseFromString(textString, "text/html");
     return textString;
 }
-        
-function restartQuiz() {
-}
 
-function startTimer() {
+function restartQuiz() {}
 
-}
+function startTimer() {}
 
-function endTimer() {
-
-}
+function endTimer() {}
 
 /**
  * @param sessionStorage Uses sessionStorage keys previously set.
  * @returns An object containing the quiz definitions.
  */
 function getConfig() {
-    const config= 
-    {
-        category: sessionStorage.getItem('category'),
-        difficulty: sessionStorage.getItem('difficulty'),
-        type: sessionStorage.getItem('type'),
-        questionCount: sessionStorage.getItem('questionCount')
+    const config = {
+        category: sessionStorage.getItem("category"),
+        difficulty: sessionStorage.getItem("difficulty"),
+        type: sessionStorage.getItem("type"),
+        questionCount: sessionStorage.getItem("questionCount"),
     };
 
     console.log(config);
