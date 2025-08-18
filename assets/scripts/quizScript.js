@@ -1,9 +1,8 @@
-
-
 // Api url components
 let category = '';
 let difficulty = '';
 let type = '';
+let questionCount = '';
 
 //Grabs the category, difficulty and type from sessionStorage.
 let config = getConfig(); 
@@ -12,11 +11,14 @@ let config = getConfig();
 category = config.category === 'any' ? (category = '') : (category = `&category=${config.category}`); 
 difficulty = config.difficulty === 'any' ? (difficulty = '') : (difficulty = `&difficulty=${config.difficulty}`);
 type = config.type === 'any' ? (type = '') : (type = `&type=${config.type}`);
+questionCount = config.questionCount === '5' ? (questionCount = '') : (questionCount = `&type=${config.questionCount}`)
 
 //game dependent variables
 let selectedAnswer;
 let correctAnswer;
-let totalQuestionsAsked;
+let totalQuestionsAsked = 0;
+let totalQuestionAmount = sessionStorage.getItem('questionCount');
+let score = 0;
 
 document.addEventListener("DOMContentLoaded", (event) => {
     loadQuestion();
@@ -30,50 +32,71 @@ document.addEventListener("DOMContentLoaded", (event) => {
 async function loadQuestion() {
     const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`; 
     const result = await fetch(`${APIUrl}`); 
-    const data = await result.json(); 
-    console.log(data);
-    //resultElement.innerHTML = '';
-    displayQuestion(data.results[0]);
-    
-    /*
-    const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
-    const result = await fetch(`${APIUrl}`);
     const data = await result.json();
-    resultElement.innerHTML = '';
+    console.log(data.results[0]);
     displayQuestion(data.results[0]);
-    */
 }
 
-displayQuestion(data) {
-    /* 
-    1. find the html element that will display the question
-    2. set the html's innertext to display the question
-    3. find the element that contains the answer options
-    4. take the data.incorrect_answers and splice in the data.correct_answer
-    5. for each answer, we create a button to be selected
-        a. Create bootstrap button to use as template
-    6. set correctAnswer to be the same as data.correct_answer 
-    */
+function displayQuestion(data) {
+    ++totalQuestionsAsked;
+    document.getElementById("question-number").innerHTML = `Question ${totalQuestionsAsked} of ${totalQuestionAmount}`;
+
+    correctAnswer = data.correct_answer;
+    let allAnswers = data.incorrect_answers;
+    allAnswers.splice((Math.random() * data.incorrect_answers.length), 0, data.correct_answer);
+    
+    //gets and sets the html of the question text
+    let questionTextElement = document.getElementById("question");
+    questionTextElement.innerHTML = data.question;
+
+    let optionButtons = document.getElementById("quiz-options").children;
+    for(let i = 0; i <= optionButtons.length; i++) {
+        if(allAnswers[i] === undefined) {
+            optionButtons[i].hidden = true;
+        } else {
+            optionButtons[i].innerHTML = allAnswers[i];
+        }
+    }
 }
 
-checkAnswer() {
-    /* 
-    1. if selectedAnswer === correctAnswer, show result correct element
-    2. else if selected !== correctAnswer, show incorrect result element
-    3. increment questions asked by 1
-    4. set the score/question count elements to correct values
-    5. checkGameEnd() 
-    */
+function checkAnswer() {
+    console.log("checking answer");
+
+    // Check if correct and update UI
+    if (selectedAnswer === correctAnswer) {
+        console.log("answer is correct");
+        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i>Correct Answer!</p>`;
+        score++;
+    } else {
+        console.log("answer is incorrect");
+        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i>Incorrect. Correct answer: ${correctAnswer}</p>`;
+    }
+
+    updateScoreDisplay(score, totalQuestionAmount);
+
+    checkGameEnd();
 }
 
-checkGameEnd() {
+// Update counters and disable options
+function updateScoreDisplay(score, totalQuestionAmount) {
+    const scoreElement = document.getElementById('correct-score');
+
+    // Update the visible score
+    resultElement.innerHTML = `${score}/${totalQuestionAmount}`;
+}
+
+function checkGameEnd() {
+
+    if(totalQuestionsAsked === totalQuestionAmount) {
+        
+    }
     /* 
     1. if totalQuestionsAsked === gameLength, end the game
     2. else, ask another question 
     */
 }
 
-selectOption(optionId) {
+function selectOption(optionId) {
     /* 
     1. get the group of the 4 buttons
     2. get the innerText of button with optionId
@@ -83,18 +106,20 @@ selectOption(optionId) {
     */
 }
         
-HTMLDecode(textString) { /* - For turning HTML into plain text */
-
+// to convert html entities into normal text of correct answer if there is any
+function HTMLToString(textString) {
+    let doc = new DOMParser().parseFromString(textString, 'text/html');
+    return textString;
 }
         
-restartQuiz() {
+function restartQuiz() {
 }
 
-startTimer() {
+function startTimer() {
 
 }
 
-endTimer() {
+function endTimer() {
 
 }
 
@@ -108,6 +133,7 @@ function getConfig() {
         category: sessionStorage.getItem('category'),
         difficulty: sessionStorage.getItem('difficulty'),
         type: sessionStorage.getItem('type'),
+        questionCount: sessionStorage.getItem('questionCount')
     };
 
     console.log(config);
