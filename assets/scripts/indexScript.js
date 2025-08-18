@@ -10,7 +10,21 @@ document.getElementById('startGameForm').addEventListener('submit', function (ev
     
     if (username.length < 3) {
         alert('Please enter a username with at least 3 characters.');
+        let errorMsg = document.getElementById('username-error');
+        if (!errorMsg) {
+            errorMsg = document.createElement('div');
+            errorMsg.id = 'username-error';
+            errorMsg.style.color = 'red';
+            errorMsg.style.marginTop = '5px';
+            document.getElementById('username').parentNode.appendChild(errorMsg);
+        }
+        errorMsg.textContent = 'Please enter a username with at least 3 characters.';
         return;
+    } else {
+        const errorMsg = document.getElementById('username-error');
+        if (errorMsg) {
+            errorMsg.textContent = '';
+        }
     }
     
     // Store username in session storage
