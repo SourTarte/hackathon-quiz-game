@@ -1,50 +1,51 @@
 /* Google fonts import */
 
 body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #3a3a3a;
 }
 
 /* General styles */
 :root {
-  --primary-font: "Inter", system-ui, sans-serif;
-  --secondary-font: "Nunito", system-ui, sans-serif;
-  /* TODO(team): define colors
-  --primary-color: ;
-  --secondary-color: ;
-  --highlight-color: ;
-  */
-  --text-color: #3a3a3a;
+    --primary-font: "Inter", system-ui, sans-serif;
+    --secondary-font: "Nunito", system-ui, sans-serif;
+    /* TODO(team): define colors*/
+    --primary-color: #7ebdc2;
+    --secondary-color: #bb4430;
+    --highlight-color: #f3dfa2;
+    --highlight-color-light: #efe6dd;
+    --text-color: #231f20;
 }
 
 /*main styles*/
 main {
-  background-color: var(--primary-color);
-  /* make element fill the remaining space */
-  flex: 1 0 auto;
-  margin: 0;
-  padding: 1rem;
-  min-height: auto; /* Let content determine height */
+    background-color: #f0f00b;
+    /* make element fill the remaining space */
+    flex: 1 0 auto;
+    margin: 0;
+    padding: 1rem;
+    min-height: auto; /* Let content determine height */
 }
 
 /* Quiz Section */
 .quiz-section {
-  background-color: var(--highlight-color-light);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin: 1;
-  height: 95vh; /* Set a fixed height for the quiz section */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 1;
+    height: 95vh; /* Set a fixed height for the quiz section */
 }
 
 /* Header */
 .quiz-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #2c3e50;
 }
 
 /* Score and Timer */
@@ -56,11 +57,12 @@ main {
     font-weight: 600;
 }
 
-#quiz-timer, #quiz-score {
-  background-color: var(--primary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  margin: 0.5rem;
+#quiz-timer,
+#quiz-score {
+    background-color: #e0f7fa;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin: 0.5rem;
 }
 
 #quiz-score {
@@ -72,27 +74,27 @@ main {
 
 /* Category */
 #quiz-category {
-  background-color: var(--secondary-color);
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  color: #fff;
-  border-radius: 8px;
+    background-color: #2980b9;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #fff;
+    border-radius: 8px;
 }
 
 /* Question Number */
 #question-number h1 {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #444;
 }
 
 /* Question */
 .quiz-question {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
 }
 
 /* Options */
@@ -103,27 +105,6 @@ main {
 }
 
 .quiz-option {
-    background-color: #e0e0e0;
-    margin: 0.5rem 0;
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-
-.quiz-option.selected {
-    background-color: #3498db;
-    color: white;
-}
-
-.quiz-option.correct {
-    background-color: #27ae60;
-    color: white;
-}
-
-.quiz-option.incorrect {
-    color: white;
     background-color: var(--highlight-color);
     margin: 0.5rem 0;
     padding: 0.75rem 1rem;
@@ -133,9 +114,7 @@ main {
 }
 
 .quiz-option:hover {
-  background-color: var(--primary-color);
-  border-width: 2px;
-  border-color: var(--secondary-color);
+    background-color: #d0d0d0;
 }
 
 .quiz-option.selected {
@@ -182,7 +161,6 @@ main {
     color: var(--text-color);
 }
 
-
 /* medium devices (tablet, 320px and up) */
 @media screen and (min-width: 320px) {
     .quiz-section {
@@ -190,13 +168,12 @@ main {
     }
 
     /* Make the quiz score and timer the same height for consistency */
-  #quiz-score {
-    min-height: 103px;
-  }
-  .quiz-footer .btn {
-    font-size: .8rem;
-
-  }
+    #quiz-score {
+        min-height: 103px;
+    }
+    .quiz-footer .btn {
+        font-size: 0.8rem;
+    }
 }
 
 /* medium devices (tablet, 768px and up) */
@@ -246,50 +223,9 @@ main {
         align-items: center;
         margin-left: 95px;
     }
-  
-    .quiz-header h1 {
-        font-size: 3rem;
-        margin-bottom: 3rem;
-    }
-    #quiz-timer,
-    #quiz-score {
-        font-size: 1.5rem;
-        padding: 1rem;
-        margin-bottom: 3rem;
-    }
-    .quiz-options {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-    #quiz-category {
-        font-size: 1.5rem;
-        padding: 0.75rem 1.5rem;
-        margin-bottom: 2rem;
-    }
-    #question-number h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-    #quiz-body {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    #answer-display {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-    }
-    .quiz-footer {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-        font-size: 1.5rem;
-    }
 }
-
 .hero-section {
-    background-image: url('../images/hero_background.png');
+    background-image: url("../images/hero_background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
