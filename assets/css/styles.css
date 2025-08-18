@@ -29,8 +29,13 @@ main {
     min-height: auto; /* Let content determine height */
 }
 
-/* modal */
+/* nav bar */
 
+.navbar {
+    height: 105px;
+}
+
+/* modal */
 #quizConfigModal {
     padding: 10rem 0.1rem 2rem 0.1rem;
 }
