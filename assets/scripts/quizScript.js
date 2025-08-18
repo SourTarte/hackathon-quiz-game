@@ -31,6 +31,7 @@ let score = 0;
 
 document.addEventListener("DOMContentLoaded", (event) => {
     loadQuestion();
+    selectOption(); // Call selectOption to set up event listeners
 });
 
 /**
