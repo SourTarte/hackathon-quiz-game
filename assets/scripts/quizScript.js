@@ -160,13 +160,16 @@ function updateAnswerDisplay(selectedAnswer, correctAnswer) {
 }
 
 function displayCategory() {
+    // get the user-friendly category name from sessionStorage, instead of a number
+    const categoryName = sessionStorage.getItem("categoryName");
 
-    //categoryName = sessionStorage.getItem("categoryName");
     // Get the element where the category will be displayed
     const categoryElement = document.getElementById("quiz-category");
-    // Set the innerHTML of the element to display the category
-    console.log(categoryElement.innerHTML = `<h3>Category: ${category}</h3>`);
-}
+
+    // Set the innerHTML of the element to display the category name
+    categoryElement.innerHTML = `<h3>Category: ${categoryName}</h3>`;
+    }
+
 
 // Update counters and disable options
 function updateScoreDisplay(score, totalQuestionAmount) {
