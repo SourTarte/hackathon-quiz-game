@@ -109,6 +109,69 @@ main {
     padding: 2rem;
     margin: 1;
 }
+
+/*  modal  */
+
+#quizConfigModal .modal-dialog {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+#quizConfigModal .modal-content {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+    border: 1px solid #f3dfa2;
+    padding: 2rem 1.5rem;
+    font-family: var(--primary-font);
+    color: var(--text-color);
+}
+#quizConfigModal .modal-header {
+    border-bottom: none;
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+#quizConfigModal .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    letter-spacing: 0.5px;
+}
+#quizConfigModal .btn-close {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+#quizConfigModal .btn-close:hover {
+    opacity: 1;
+}
+#quizConfigModal .modal-body {
+    font-size: 1rem;
+    color: var(--text-color);
+    padding-top: 0.5rem;
+}
+#quizConfigModal .modal-footer {
+    border-top: none;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    padding-top: 1rem;
+}
+#quizConfigModal .btn-warning, #quizConfigModal .btn-secondary {
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+    background: var(--highlight-color);
+    color: var(--text-color);
+    transition: background 0.2s, color 0.2s;
+}
+#quizConfigModal .btn-warning:hover, #quizConfigModal .btn-secondary:hover {
+    background: var(--secondary-color);
+    color: #fff;
+}
 /* Header */
 .quiz-header h1 {
     font-size: 2.5rem;
