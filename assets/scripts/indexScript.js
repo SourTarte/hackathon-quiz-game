@@ -79,10 +79,15 @@ document
  * Sets session variables to the quiz config options selected
  */
 function setConfig(questionCount, category, difficulty, type) {
-
   sessionStorage.setItem('questionCount', questionCount);
   sessionStorage.setItem('category', category); // this is still the value (e.g. "27")
   sessionStorage.setItem('difficulty', difficulty);
   sessionStorage.setItem('type', type);
+
+  // store the display name of the category, otherwise only value number can be referenced
+  const categorySelect = document.getElementById('trivia-category');
+  const selectedOption = categorySelect.options[categorySelect.selectedIndex];
+  const categoryDisplayName = selectedOption.textContent; // gets e.g. "Animals" instead of "27"
+  sessionStorage.setItem('categoryName', categoryDisplayName);
 }
 
