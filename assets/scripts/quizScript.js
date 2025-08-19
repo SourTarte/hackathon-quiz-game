@@ -38,9 +38,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
     // call the check answer function when user clicks the check answer btn
+    updateScoreDisplay(score, totalQuestionAmount);
     document
         .querySelector("#check-button")
         .addEventListener("click", checkAnswer);
+
 
     
 });
@@ -65,6 +67,9 @@ async function loadQuestion() {
     correctAnswer = "";
     selectedAnswer = "";
     isChecked = false;
+    // Reset the answer element
+    document.getElementById("answer").innerHTML = "";
+
     
 
     const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
@@ -100,9 +105,6 @@ function displayQuestion(data) {
             optionButtons[i].innerHTML = allAnswers[i];
         }
     }
-
-    
-
 }
 
 function checkAnswer() {
@@ -112,16 +114,34 @@ function checkAnswer() {
     // Check if correct and update UI
     if (selectedAnswer === correctAnswer) {
         console.log("answer is correct");
-        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i>Correct Answer!</p>`;
+        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i> Correct Answer!</p>`;
         score++;
     } else {
         console.log("answer is incorrect");
-        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i>Incorrect. Correct answer: ${correctAnswer}</p>`;
+        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</p>`;
     }
 
     updateScoreDisplay(score, totalQuestionAmount);
 
+    updateAnswerDisplay(selectedAnswer, correctAnswer);
+
     checkGameEnd();
+
+}
+
+
+function updateAnswerDisplay(selectedAnswer, correctAnswer) {
+    // Display the result based on whether the answer is correct or not
+    if (selectedAnswer === correctAnswer) {
+            const questionAnswer = document.getElementById("answer");
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i>Correct Answer!</h2>`;
+    } else {
+       const questionAnswer = document.getElementById("answer");
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i>Incorrect. Correct answer: ${correctAnswer}</h2>`;
+    }
+
+    // Update the answer text
+    answerDisplay = document.getElementById("answer");
 }
 
 // Update counters and disable options
@@ -178,7 +198,9 @@ function HTMLToString(textString) {
     return textString;
 }
 
-function restartQuiz() {}
+function restartQuiz() {
+    window.location.href = 'index.html';
+}
 
 function startTimer() {}
 
