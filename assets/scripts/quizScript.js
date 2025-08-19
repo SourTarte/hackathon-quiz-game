@@ -162,7 +162,7 @@ function updateAnswerDisplay(selectedAnswer, correctAnswer) {
 
 function displayCategory() {
 
-    category = sessionStorage.getItem("categoryName");
+    //categoryName = sessionStorage.getItem("categoryName");
     // Get the element where the category will be displayed
     const categoryElement = document.getElementById("quiz-category");
     // Set the innerHTML of the element to display the category
