@@ -29,10 +29,11 @@ function validateName() {
                 if (!errorMsg) {
                     errorMsg = document.createElement("div");
                     errorMsg.id = "username-error";
-                    errorMsg.style.color = "red";
+                    errorMsg.style.color = "#bd3131";
                     errorMsg.style.marginTop = "5px";
                     errorMsg.style.backgroundColor = "white";
                     errorMsg.style.padding = "1rem";
+                    errorMsg.style.borderRadius = "5px";
                     errorMsg.style.fontWeight = "bold";
                     // this adds the above div to the document flow
                     document
