@@ -138,7 +138,7 @@ function updateAnswerDisplay(selectedAnswer, correctAnswer) {
             questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i>   Correct Answer!</h2>`;
     } else {
        const questionAnswer = document.getElementById("answer");
-            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i>   Incorrect. Correct answer: ${correctAnswer}</h2>`;
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i>   Incorrect answer: ${correctAnswer}</h2>`;
     }
 
     // Update the answer text
