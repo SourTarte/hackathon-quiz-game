@@ -28,6 +28,11 @@ let correctAnswer;
 let totalQuestionsAsked = 0;
 let totalQuestionAmount = sessionStorage.getItem("questionCount");
 let score = 0;
+let isChecked = false;
+let canLoadQuestion = false;
+
+//element queries
+let resultElement = document.getElementById("correct-score");
 
 document.addEventListener("DOMContentLoaded", (event) => {
     loadQuestion();
@@ -36,7 +41,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document
         .querySelector("#check-button")
         .addEventListener("click", checkAnswer);
+
+    
 });
+
+document.getElementById("check-answer").addEventListener("click", (event) => {
+    if (selectedAnswer !== "" && !isChecked) {
+        checkAnswer();
+    }
+})
 
 /**
  * Uses the trivia DB's API to spit back questions.
@@ -44,6 +57,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
  * receives the result as a new variable, data.
  */
 async function loadQuestion() {
+    if(selectedAnswer !== "") {
+        document.getElementById("quiz-options").querySelectorAll("li").forEach(function (option) {
+            option.classList.remove("selected");
+        });
+    }
+    correctAnswer = "";
+    selectedAnswer = "";
+    isChecked = false;
+    
+
     const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
     const result = await fetch(`${APIUrl}`);
     const data = await result.json();
@@ -77,10 +100,14 @@ function displayQuestion(data) {
             optionButtons[i].innerHTML = allAnswers[i];
         }
     }
+
+    
+
 }
 
 function checkAnswer() {
     console.log("checking answer");
+    isChecked = true;
 
     // Check if correct and update UI
     if (selectedAnswer === correctAnswer) {
@@ -107,6 +134,10 @@ function updateScoreDisplay(score, totalQuestionAmount) {
 
 function checkGameEnd() {
     if (totalQuestionsAsked === totalQuestionAmount) {
+    } else {
+        setTimeout(function(){loadQuestion();}, 4000);
+        
+        
     }
     /* 
     1. if totalQuestionsAsked === gameLength, end the game
@@ -126,6 +157,7 @@ function selectOption() {
             if (optionsElement.querySelector(".selected")) {
                 // Find the currently selected option element
                 const activeOption = optionsElement.querySelector(".selected");
+                
 
                 // Remove the 'selected' class from the previously selected option
                 activeOption.classList.remove("selected");
@@ -133,6 +165,9 @@ function selectOption() {
 
             // Add the 'selected' class to the option that was just clicked
             option.classList.add("selected");
+
+            selectedAnswer = option.innerText;
+            console.log(selectedAnswer);
         });
     });
 }

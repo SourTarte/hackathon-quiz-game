@@ -29,23 +29,6 @@ main {
     min-height: auto; /* Let content determine height */
 }
 
-/* nav bar */
-
-.navbar {
-    height: 105px;
-}
-
-/* modal */
-#quizConfigModal {
-    padding: 10rem 0.1rem 2rem 0.1rem;
-}
-
-/* username input field */
-
-#username {
-    font-size: 1rem;
-}
-
 /* Quiz Section */
 .quiz-section {
     background-color: var(--highlight-color-light);
@@ -83,10 +66,10 @@ main {
 
 #quiz-timer,
 #quiz-score {
-    background-color: var(--primary-color);
-    padding: 0.8rem 1rem;
-    border-radius: 6px;
-    margin: 0.5rem;
+  background-color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin: 0.5rem;
 }
 
 #quiz-score {
