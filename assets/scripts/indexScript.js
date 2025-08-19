@@ -82,8 +82,10 @@ document
  * Sets session variables to the quiz config options selected
  */
 function setConfig(questionCount, category, difficulty, type) {
-    sessionStorage.setItem("questionCount", questionCount);
-    sessionStorage.setItem("category", category);
-    sessionStorage.setItem("difficulty", difficulty);
-    sessionStorage.setItem("type", type);
+
+  sessionStorage.setItem('questionCount', questionCount);
+  sessionStorage.setItem('category', category); // this is still the value (e.g. "27")
+  sessionStorage.setItem('difficulty', difficulty);
+  sessionStorage.setItem('type', type);
 }
+
