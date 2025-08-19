@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     selectOption(); // Call selectOption to set up event listeners
     // call the check answer function when user clicks the check answer btn
     updateScoreDisplay(score, totalQuestionAmount);
+    displayCategory(category);
     document
         .querySelector("#check-button")
         .addEventListener("click", checkAnswer);
@@ -134,14 +135,23 @@ function updateAnswerDisplay(selectedAnswer, correctAnswer) {
     // Display the result based on whether the answer is correct or not
     if (selectedAnswer === correctAnswer) {
             const questionAnswer = document.getElementById("answer");
-            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i>Correct Answer!</h2>`;
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i>   Correct Answer!</h2>`;
     } else {
        const questionAnswer = document.getElementById("answer");
-            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i>Incorrect. Correct answer: ${correctAnswer}</h2>`;
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i>   Incorrect. Correct answer: ${correctAnswer}</h2>`;
     }
 
     // Update the answer text
     answerDisplay = document.getElementById("answer");
+}
+
+function displayCategory() {
+
+    category = sessionStorage.getItem("categoryName");
+    // Get the element where the category will be displayed
+    const categoryElement = document.getElementById("quiz-category");
+    // Set the innerHTML of the element to display the category
+    console.log(categoryElement.innerHTML = `<h3>Category: ${category}</h3>`);
 }
 
 // Update counters and disable options
@@ -199,7 +209,7 @@ function HTMLToString(textString) {
 }
 
 function restartQuiz() {
-    window.location.href = 'index.html';
+
 }
 
 function startTimer() {}
