@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // get username created in index JS
     const username = sessionStorage.getItem("username");
     // calls function that displays username dynamically
-    displayUsername(username);
+    displayUsername(`${config.username}`);
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
     // call the check answer function when user clicks the check answer btn
@@ -241,6 +241,7 @@ function getConfig() {
         difficulty: sessionStorage.getItem("difficulty"),
         type: sessionStorage.getItem("type"),
         questionCount: sessionStorage.getItem("questionCount"),
+        username: sessionStorage.getItem("username"),
     };
 
     console.log(config);
