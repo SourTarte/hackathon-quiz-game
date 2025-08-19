@@ -32,6 +32,28 @@ main {
     padding: 1rem;
     min-height: auto; /* Let content determine height */
 }
+
+/* name section */
+
+#startGameForm label {
+    color: white;
+    font-size: 1.5rem;
+}
+
+#startGameForm input {
+    width: 15rem;
+}
+
+#startGameForm p {
+    color: white;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+#validateUsernameBtn {
+    font-size: 1rem;
+}
+
 /* How it works section */
 .how-it-works-section {
     background: var(--highlight-color-light);

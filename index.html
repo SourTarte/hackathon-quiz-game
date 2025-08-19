@@ -59,9 +59,6 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="index.html">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#how-it-works">How it works</a>
-              </li>
             </ul>
           </div>
         </div>
@@ -87,24 +84,22 @@
                 Test your knowledge and most importantly, have fun! Enter your name and start the challenge.
               </p>
 
-              <form class="row gx-2 gy-2 justify-content-center align-items-center" id="startGameForm" novalidate>
-                <div class="quiz-footer col-4 col-sm-3 col-md-3 col-lg-2 d-grid">
-                  <!-- <button type="submit" id="startGameBtn" class="btn btn-warning btn-lg rounded-pill w-100">
-                    Start
-                  </button> -->
-
-                  <!-- Button trigger modal -->
-                  <button type="button" id="startGameBtn" class="btn btn-warning btn-lg rounded-pill w-100" data-bs-toggle="modal" data-bs-target="#quizConfigModal">
-                    Start
+                <form class="row justify-content-center align-items-center" id="startGameForm" novalidate>
+                <div class="col-12 d-flex flex-column align-items-center">
+                  <label for="username" class="px-3"><strong>Name</strong></label>
+                  <p>Must contain at-least 2 characters and 1 number.</p>
+                  <input type="text" id="username" name="username" class="form-control form-control-lg mb-3" style="max-width: 300px;" placeholder="Enter your username" aria-label="Username" autocomplete="username" required minlength="3">
+                  <button type="submit" id="validateUsernameBtn" class="btn btn-primary rounded-pill mb-2 w-100 p-3" style="max-width: 300px;">
+                  Submit Name and <strong>Start!</strong>
                   </button>
                 </div>
-              </form>
+                </form>
             </div>
           </div>
         </div>
       </section>
           <!-- How It Works Section -->
-          <section id="how-it-works" class="how-it-works-section py-5 bg">
+          <section class="how-it-works-section py-5 bg">
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-12 col-md-4 mb-4 mb-md-0">
@@ -145,15 +140,9 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="quizConfigModalLabel">Customize your quiz</h1>
-                                                <span class="ms-2" aria-hidden="true"><i class="fa-solid fa-puzzle-piece text-warning" style="font-size:1.3em;"></i></span>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                            </div>
-                            <div class="col-8 col-sm-6 col-md-6 col-lg-5">
-                      <label for="username" class="px-3"><strong>Your username</strong></label>
-                      <input type="text" id="username" name="username" class="form-control mx-3 form-control-lg w-100" placeholder="Username" aria-label="Username" autocomplete="username" required minlength="3">
-                    </div>
+                        <h1 class="modal-title fs-5" id="quizConfigModalLabel">New message</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
                     <div class="modal-body">
                     <form>
                       <div class="mb-3">
