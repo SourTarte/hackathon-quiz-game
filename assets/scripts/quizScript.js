@@ -35,8 +35,6 @@ let canLoadQuestion = false;
 let resultElement = document.getElementById("correct-score");
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    // get username created in index JS
-    const username = sessionStorage.getItem("username");
     // calls function that displays username dynamically
     displayUsername(`${config.username}`);
     loadQuestion();
