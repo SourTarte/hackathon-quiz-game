@@ -54,24 +54,29 @@ main {
     font-size: 1rem;
 }
 
+#validateUsernameBtn:hover {
+    background-color: green;
+    border: green;
+}
+
 /* How it works section */
 .how-it-works-section {
     background: var(--highlight-color-light);
     border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
     padding: 3rem 0;
     margin-bottom: 2rem;
 }
 .how-it-works-section .card {
     background: #fff;
     border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s, box-shadow 0.2s;
     border: none;
 }
 .how-it-works-section .card:hover {
     transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 6px 24px rgba(123,189,194,0.15);
+    box-shadow: 0 6px 24px rgba(123, 189, 194, 0.15);
 }
 .how-it-works-section .card-title {
     font-family: var(--primary-font);
@@ -119,7 +124,7 @@ main {
 #quizConfigModal .modal-content {
     background: #fff;
     border-radius: 14px;
-    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.08);
     border: 1px solid #f3dfa2;
     padding: 2rem 1.5rem;
     font-family: var(--primary-font);
@@ -157,7 +162,8 @@ main {
     justify-content: center;
     padding-top: 1rem;
 }
-#quizConfigModal .btn-warning, #quizConfigModal .btn-secondary {
+#quizConfigModal .btn-warning,
+#quizConfigModal .btn-secondary {
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
@@ -168,7 +174,8 @@ main {
     color: var(--text-color);
     transition: background 0.2s, color 0.2s;
 }
-#quizConfigModal .btn-warning:hover, #quizConfigModal .btn-secondary:hover {
+#quizConfigModal .btn-warning:hover,
+#quizConfigModal .btn-secondary:hover {
     background: var(--secondary-color);
     color: #fff;
 }
@@ -191,10 +198,10 @@ main {
 
 #quiz-timer,
 #quiz-score {
-  background-color: var(--primary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  margin: 0.5rem;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin: 0.5rem;
 }
 
 #quiz-score {
@@ -364,6 +371,12 @@ main {
         height: 95vh;
         margin-top: 10px;
     }
+}
+
+/* modal */
+
+#quizConfigModal {
+    margin-top: 16rem;
 }
 
 /* Large laptop devices (large laptop, 1440px and up) */
