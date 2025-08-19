@@ -373,6 +373,12 @@ main {
     }
 }
 
+/* modal */
+
+#quizConfigModal {
+    margin-top: 16rem;
+}
+
 /* Large laptop devices (large laptop, 1440px and up) */
 @media screen and (min-width: 1440px) {
     .quiz-section {
