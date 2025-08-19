@@ -67,6 +67,9 @@ async function loadQuestion() {
     correctAnswer = "";
     selectedAnswer = "";
     isChecked = false;
+    // Reset the answer element
+    document.getElementById("answer").innerHTML = "";
+
     
 
     const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
@@ -111,16 +114,16 @@ function checkAnswer() {
     // Check if correct and update UI
     if (selectedAnswer === correctAnswer) {
         console.log("answer is correct");
-        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i>Correct Answer!</p>`;
+        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i> Correct Answer!</p>`;
         score++;
     } else {
         console.log("answer is incorrect");
-        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i>Incorrect. Correct answer: ${correctAnswer}</p>`;
+        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</p>`;
     }
 
     updateScoreDisplay(score, totalQuestionAmount);
 
-    //updateAnswerDisplay(selectedAnswer, correctAnswer);
+    updateAnswerDisplay(selectedAnswer, correctAnswer);
 
     checkGameEnd();
 
@@ -130,10 +133,15 @@ function checkAnswer() {
 function updateAnswerDisplay(selectedAnswer, correctAnswer) {
     // Display the result based on whether the answer is correct or not
     if (selectedAnswer === correctAnswer) {
-        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i>Correct Answer!</p>`;
+            const questionAnswer = document.getElementById("answer");
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i>Correct Answer!</h2>`;
     } else {
-        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i>Incorrect. Correct answer: ${correctAnswer}</p>`;
+       const questionAnswer = document.getElementById("answer");
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i>Incorrect. Correct answer: ${correctAnswer}</h2>`;
     }
+
+    // Update the answer text
+    answerDisplay = document.getElementById("answer");
 }
 
 // Update counters and disable options
@@ -191,22 +199,7 @@ function HTMLToString(textString) {
 }
 
 function restartQuiz() {
-    if (totalQuestionAmount === totalQuestionsAsked) {
-    document.querySelector("#main-quiz-container").setAttribute("hidden", true);
-        document.querySelector("#main-results-container").removeAttribute("hidden");
-        console.log("Game Over");
-        // Show the final score and disable further interaction
-        resultElement.innerHTML = `<p>Game Over! Your final score is ${score}/${totalQuestionAmount}.</p>`;
-} else {
-    document.querySelector("#main-quiz-container").removeAttribute("hidden");
-    document.querySelector("#main-results-container").setAttribute("hidden", true);
-    console.log("Quiz Restarted");
-    // Reset the quiz state
-    totalQuestionsAsked = 0;
-    score = 0;
-    resultElement.innerHTML = "";
-    loadQuestion();
-}
+    window.location.href = 'index.html';
 }
 
 function startTimer() {}
