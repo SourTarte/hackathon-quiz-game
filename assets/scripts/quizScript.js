@@ -20,7 +20,8 @@ type = config.type === "any" ? (type = "") : (type = `&type=${config.type}`);
 questionCount =
     config.questionCount === "5"
         ? (questionCount = "")
-        : (questionCount = `&type=${config.questionCount}`);
+        // api demands "&amount=" here and not "&type="
+        : (questionCount = `&amount=${config.questionCount}`);
 
 //game dependent variables
 let selectedAnswer;
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         .addEventListener("click", checkAnswer);
 
 
-    
+
 });
 
 document.getElementById("check-answer").addEventListener("click", (event) => {
@@ -177,14 +178,15 @@ function updateScoreDisplay(score, totalQuestionAmount) {
 
 function checkGameEnd() {
     if (totalQuestionsAsked === totalQuestionAmount) {
+
     } else {
         setTimeout(function(){loadQuestion();}, 4000);
-        
-        
+
+
     }
-    /* 
+    /*
     1. if totalQuestionsAsked === gameLength, end the game
-    2. else, ask another question 
+    2. else, ask another question
     */
 }
 
@@ -200,7 +202,7 @@ function selectOption() {
             if (optionsElement.querySelector(".selected")) {
                 // Find the currently selected option element
                 const activeOption = optionsElement.querySelector(".selected");
-                
+
 
                 // Remove the 'selected' class from the previously selected option
                 activeOption.classList.remove("selected");
@@ -248,12 +250,12 @@ function getConfig() {
 }
 
 /**
- * <--- global variables needed ---> 
+ * <--- global variables needed --->
  * selectedAnswer - currently selected answer
  * correctAnswer - the correct answer
- * 
+ *
  * displayQuestion(data){
-    
+
         1. find the html element that will display the question
         2. set the html's innertext to display the question
         3. find the element that contains the answer options
@@ -283,16 +285,16 @@ function getConfig() {
         4. find button with class 'selected' and remove it
         5. add class 'selected' to new option
     }
-        
+
     HTMLDecode(textString){ - For turning HTML into plain text
-    
+
     }
-        
+
     restartQuiz() {
     }w
 
     startTimer(){
-    
+
     }
 
     endTimer(){
