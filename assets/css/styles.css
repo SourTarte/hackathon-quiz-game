@@ -181,9 +181,8 @@ main {
 }
 /* Header */
 .quiz-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
     color: var(--text-color);
 }
 
@@ -205,10 +204,10 @@ main {
 }
 
 #quiz-score {
-    min-height: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 /* Category */
@@ -326,11 +325,6 @@ main {
     .quiz-results {
         margin-top: 160px;
     }
-
-    /* Make the quiz score and timer the same height for consistency */
-    #quiz-score {
-        min-height: 75px;
-    }
     .quiz-footer .btn {
         font-size: 0.8rem;
     }
@@ -349,8 +343,9 @@ main {
         min-height: auto;
     }
     .quiz-header h1 {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
     }
     #quiz-timer,
     #quiz-score {
