@@ -20,6 +20,10 @@ body {
 }
 
 /*main styles*/
+#index-main {
+    background-color: var(--highlight-color-light);
+}
+
 main {
     background-color: var(--primary-color);
     /* make element fill the remaining space */
