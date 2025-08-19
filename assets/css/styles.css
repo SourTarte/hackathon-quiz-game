@@ -293,10 +293,11 @@ main {
     }
 }
 .hero-section {
-    background-image: url("../images/hero_background.png");
+    background-image: url("../images/background.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     background-repeat: no-repeat;
+    width: 100%;
     min-height: 100vh;
     position: relative;
 }
