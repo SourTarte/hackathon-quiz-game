@@ -222,6 +222,10 @@ main {
     color: var(--text-color);
 }
 
+.mt-5 {
+    margin-top: 0 !important;
+}
+
 /* medium devices (tablet, 320px and up) */
 @media screen and (min-width: 320px) {
     .quiz-section {
