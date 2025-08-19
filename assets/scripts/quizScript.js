@@ -38,9 +38,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
     // call the check answer function when user clicks the check answer btn
+    updateScoreDisplay(score, totalQuestionAmount);
     document
         .querySelector("#check-button")
         .addEventListener("click", checkAnswer);
+
 
     
 });
@@ -100,9 +102,6 @@ function displayQuestion(data) {
             optionButtons[i].innerHTML = allAnswers[i];
         }
     }
-
-    
-
 }
 
 function checkAnswer() {
@@ -121,7 +120,20 @@ function checkAnswer() {
 
     updateScoreDisplay(score, totalQuestionAmount);
 
+    //updateAnswerDisplay(selectedAnswer, correctAnswer);
+
     checkGameEnd();
+
+}
+
+
+function updateAnswerDisplay(selectedAnswer, correctAnswer) {
+    // Display the result based on whether the answer is correct or not
+    if (selectedAnswer === correctAnswer) {
+        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i>Correct Answer!</p>`;
+    } else {
+        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i>Incorrect. Correct answer: ${correctAnswer}</p>`;
+    }
 }
 
 // Update counters and disable options
@@ -178,7 +190,24 @@ function HTMLToString(textString) {
     return textString;
 }
 
-function restartQuiz() {}
+function restartQuiz() {
+    if (totalQuestionAmount === totalQuestionsAsked) {
+    document.querySelector("#main-quiz-container").setAttribute("hidden", true);
+        document.querySelector("#main-results-container").removeAttribute("hidden");
+        console.log("Game Over");
+        // Show the final score and disable further interaction
+        resultElement.innerHTML = `<p>Game Over! Your final score is ${score}/${totalQuestionAmount}.</p>`;
+} else {
+    document.querySelector("#main-quiz-container").removeAttribute("hidden");
+    document.querySelector("#main-results-container").setAttribute("hidden", true);
+    console.log("Quiz Restarted");
+    // Reset the quiz state
+    totalQuestionsAsked = 0;
+    score = 0;
+    resultElement.innerHTML = "";
+    loadQuestion();
+}
+}
 
 function startTimer() {}
 
