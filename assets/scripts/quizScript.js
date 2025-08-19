@@ -35,6 +35,10 @@ let canLoadQuestion = false;
 let resultElement = document.getElementById("correct-score");
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    // get username created in index JS
+    const username = sessionStorage.getItem("username");
+    // calls function that displays username dynamically
+    displayUsername(username);
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
     // call the check answer function when user clicks the check answer btn
@@ -52,7 +56,17 @@ document.getElementById("check-answer").addEventListener("click", (event) => {
     if (selectedAnswer !== "" && !isChecked) {
         checkAnswer();
     }
-})
+});
+
+/**
+ * Displays the user's username in the quiz interface.
+ * @param {string} username - The username to display, typically retrieved from sessionStorage
+ */
+
+function displayUsername(username) {
+    const usernameElement = document.querySelector("#usernameDisplay");
+    usernameElement.innerText = `Challenger: ${username}`;
+}
 
 /**
  * Uses the trivia DB's API to spit back questions.
@@ -60,8 +74,11 @@ document.getElementById("check-answer").addEventListener("click", (event) => {
  * receives the result as a new variable, data.
  */
 async function loadQuestion() {
-    if(selectedAnswer !== "") {
-        document.getElementById("quiz-options").querySelectorAll("li").forEach(function (option) {
+    if (selectedAnswer !== "") {
+        document
+            .getElementById("quiz-options")
+            .querySelectorAll("li")
+            .forEach(function (option) {
             option.classList.remove("selected");
         });
     }
@@ -70,8 +87,6 @@ async function loadQuestion() {
     isChecked = false;
     // Reset the answer element
     document.getElementById("answer").innerHTML = "";
-
-    
 
     const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
     const result = await fetch(`${APIUrl}`);
