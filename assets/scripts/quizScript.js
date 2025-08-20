@@ -97,8 +97,11 @@ async function loadQuestion() {
 
     const result = await fetch(`${APIUrl}`);
     const data = await result.json();
-    console.log(data.results[0]);
     displayQuestion(data.results[0]);
+
+    const dataPreview = data.results[0];
+    //dataPreview.correct_answer = null; // anticheat, comment out this line to show correct answer in console messages
+    console.log(dataPreview);
 }
 
 function displayQuestion(data) {
@@ -133,18 +136,12 @@ function displayQuestion(data) {
 
     //applies the names allAnswers to the option buttons on the quiz, setting the last two buttons to hidden if the quiz is true/false.
     let optionButtons = document.getElementById("quiz-options").children;
-    console.log(`There are ${optionButtons.length} option buttons`);
 
     for (let i = 0; i < optionButtons.length; i++) {
         if(type === "&type=boolean" && i >= 2) { //if gametype is true/false AND it's the 3rd or 4th iteration
-            console.log(`type is true/false and i is ${i}. Continuing`);
             continue;
-        } else if (type === "&type=multiple") {
-            console.log(`type is multiple and it's the button num ${i}`);
-            if(optionButtons[i].hasAttribute("hidden")) {
-                console.log(`button num ${i} is hidden and shouldn't be`);
-                setAttribute("hidden", false);
-            } else {console.log(`button num ${i} should be and is hidden`);}
+        } else if (type === "&type=multiple" && optionButtons[i].hasAttribute("hidden")) {
+            setAttribute("hidden", false);
         }
 
         if(!optionButtons[i].hasAttribute("hidden")) {
@@ -158,11 +155,10 @@ function displayQuestion(data) {
 function checkAnswer() {
     if(isChecked == false) // If this is removed, some interaction with fontawesome's code causes multiple API calls, DO NOT REMOVE
     {
-        console.log("checking answer");
         isChecked = true;
+        console.log("checking answer");
 
-    // Check if correct and update UI
-        if (selectedAnswer === correctAnswer) {
+        if (selectedAnswer === correctAnswer) { // Check if correct and increment score
             console.log("answer is correct");
             score++;
         } else {
@@ -170,9 +166,7 @@ function checkAnswer() {
         }
 
         updateScoreDisplay(score, totalQuestionAmount);
-
         updateAnswerDisplay(selectedAnswer, correctAnswer);
-
         checkGameEnd();
     }
 }
@@ -203,8 +197,9 @@ function displayCategory() {
     categoryElement.innerHTML = `<h3>Category: ${categoryName}</h3>`;
     }
 
-
-// Update counters and disable options
+/**
+ *  Updates the text for the score and question tracker elements.
+ */
 function updateScoreDisplay(score, totalQuestionAmount) {
     const scoreElement = document.getElementById("correct-score");
 
@@ -213,8 +208,6 @@ function updateScoreDisplay(score, totalQuestionAmount) {
 }
 
 function checkGameEnd() {
-    console.log(`Questions asked: ${totalQuestionsAsked}, Total questions: ${totalQuestionAmount}`);
-
     if (totalQuestionsAsked >= parseInt(totalQuestionAmount)) {
         // Add a delay before showing game over
         setTimeout(function () { endQuiz(); }, 2000); // 2 second delay to let user see the last answer
