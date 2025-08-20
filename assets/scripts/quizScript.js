@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
     updateScoreDisplay(score, totalQuestionAmount); // call the check answer function when user clicks the check answer btn
-    displayCategory(category);
+    displayCategory();
+    displayDifficulty();
     document
         .querySelector("#check-answer")
         .addEventListener("click", checkAnswer);
@@ -195,6 +196,18 @@ function displayCategory() {
 
     // Set the innerHTML of the element to display the category name
     categoryElement.innerHTML = `<h3>Category: ${categoryName}</h3>`;
+    }
+
+
+function displayDifficulty() {
+    // get the user-friendly difficulty name from sessionStorage, instead of a number
+    const difficultyName = sessionStorage.getItem("difficultyName");
+
+    // Get the element where the difficulty will be displayed
+    const difficultyElement = document.getElementById("quiz-difficulty");
+
+    // Set the innerHTML of the element to display the difficulty name
+    difficultyElement.innerHTML = `<h3>Difficulty: ${difficultyName}</h3>`;
     }
 
 /**
