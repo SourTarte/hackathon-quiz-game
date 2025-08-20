@@ -3,6 +3,7 @@ let category = "";
 let difficulty = "";
 let type = "";
 let questionCount = "";
+let token = "";
 
 //Grabs the category, difficulty and type from sessionStorage.
 let config = getConfig();
@@ -17,11 +18,23 @@ difficulty =
         ? (difficulty = "")
         : (difficulty = `&difficulty=${config.difficulty}`);
 type = config.type === "any" ? (type = "") : (type = `&type=${config.type}`);
-questionCount =
-    config.questionCount === "5"
-        ? (questionCount = "")
-        // api demands "&amount=" here and not "&type="
-        : (questionCount = `&amount=${config.questionCount}`);
+
+// Function to fetch the session token
+async function fetchSessionToken() {
+    try {
+        //  make a request for a session token
+        let tokenFetch = await fetch(`https://opentdb.com/api_token.php?command=request`);
+        // retrieve it as a json
+        let tokenData = await tokenFetch.json();
+        // grab the token
+        token = tokenData.token;
+        console.log("Token fetched:", token);
+    } catch (error) {
+        console.error("Error fetching token:", error);
+        token = ""; // fallback to no token
+    }
+}
+
 
 //game dependent variables
 let selectedAnswer;
@@ -30,11 +43,14 @@ let totalQuestionsAsked = 0;
 let totalQuestionAmount = sessionStorage.getItem("questionCount");
 let score = 0;
 let isChecked = false;
+let allQuestions = []; // Array to store all fetched questions
 
 //element queries
 let resultElement = document.getElementById("correct-score");
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    // Fetch the session token first
+    fetchSessionToken();
     HideUnusedButtons(); // If the game is true/false, hides the unused 3rd and 4th buttons
     displayUsername(`${config.username}`); // calls function that displays username dynamically
     loadQuestion();
@@ -93,16 +109,69 @@ async function loadQuestion() {
     isChecked = false;
     // Reset the answer element
     document.getElementById("answer").innerHTML = "";
+    // builds API call - only include token if it exists
+    const tokenParam = token ? `&token=${token}` : "";
+    const APIUrl = `https://opentdb.com/api.php?amount=${config.questionCount}${category}${difficulty}${type}${tokenParam}`;
 
-    const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
+    console.log("API URL:", APIUrl);
 
-    const result = await fetch(`${APIUrl}`);
+    try {
+    const result = await fetch(APIUrl);
     const data = await result.json();
-    displayQuestion(data.results[0]);
+        console.log("API Response:", data);
 
-    const dataPreview = data.results[0];
+        // Check for the main error: not enough questions available
+        if (data.response_code === 1) {
+            displayAPIError("Not enough questions available for your settings. Try fewer questions or different options.");
+            return;
+        }
+
+    allQuestions.push(...data.results); // Add new questions to our global array
+    displayQuestion(allQuestions[totalQuestionsAsked]);
+
+    const dataPreview = allQuestions[totalQuestionsAsked];
     //dataPreview.correct_answer = null; // anticheat, comment out this line to show correct answer in console messages
     console.log(dataPreview);
+    } catch (error) {
+        console.error("Error fetching questions:", error);
+        displayAPIError("Could not load questions. Please try again.");
+    }
+}
+
+/**
+ * Shows the next question from the stored questions array without making an API call
+ */
+function showNextQuestion() {
+    if (selectedAnswer !== "") {
+        document
+            .getElementById("quiz-options")
+            .querySelectorAll("li")
+            .forEach(function (option) {
+            option.classList.remove("selected");
+        });
+    }
+    correctAnswer = "";
+    selectedAnswer = "";
+    isChecked = false;
+    // Reset the answer element
+    document.getElementById("answer").innerHTML = "";
+
+    // Display the next question from our stored array
+    displayQuestion(allQuestions[totalQuestionsAsked]);
+}
+
+/**
+ * Displays API error messages to the user
+ * @param {string} message - The error message to display
+ */
+function displayAPIError(message) {
+    // Display error message in the question area
+    const questionElement = document.getElementById("question");
+    questionElement.innerHTML = "Error Loading Quiz";
+
+    // Display error message in the answer area
+    const answerElement = document.getElementById("answer");
+    answerElement.innerHTML = `<h3>Error: ${message}</h3>`;
 }
 
 function displayQuestion(data) {
@@ -111,6 +180,12 @@ function displayQuestion(data) {
     document.getElementById(
         "question-number"
     ).innerHTML = `Question ${totalQuestionsAsked} of ${totalQuestionAmount}`;
+
+    // Check if data exists and has the required properties
+    if (!data || !data.question || !data.correct_answer || !data.incorrect_answers) {
+        console.error("Invalid question data:", data);
+        return;
+    }
 
     //sets the answer variables to the proper values via the returned API data
     correctAnswer = data.correct_answer;
@@ -225,7 +300,7 @@ function checkGameEnd() {
         // Add a delay before showing game over
         setTimeout(function () { endQuiz(); }, 2000); // 2 second delay to let user see the last answer
     } else {
-        setTimeout(function(){loadQuestion();}, 4000); // Wait 4 seconds before loading the next question
+        setTimeout(function(){showNextQuestion();}, 2000); // Wait 2 seconds before showing the next question
     }
 }
 
