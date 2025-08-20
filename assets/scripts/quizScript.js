@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document
         .querySelector("#check-answer")
         .addEventListener("click", checkAnswer);
-<<<<<<< HEAD
 
     // Add event listener for the End Quiz button
     const endQuizBtn = document.querySelector("#end-Quiz-btn");
@@ -56,8 +55,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     } else {
         console.error("End Quiz button not found!");
     }
-=======
->>>>>>> main
 });
 
 document.getElementById("check-answer").addEventListener("click", (event) => {
@@ -164,17 +161,7 @@ function checkAnswer() {
         console.log("checking answer");
         isChecked = true;
 
-<<<<<<< HEAD
     // Check if correct and update UI
-    if (selectedAnswer === correctAnswer) {
-        console.log("answer is correct");
-        //resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i> Correct Answer!</p>`;
-        score++;
-    } else {
-        console.log("answer is incorrect");
-        //resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</p>`;
-=======
-        // Check if correct and update UI
         if (selectedAnswer === correctAnswer) {
             console.log("answer is correct");
             score++;
@@ -187,7 +174,6 @@ function checkAnswer() {
         updateAnswerDisplay(selectedAnswer, correctAnswer);
 
         checkGameEnd();
->>>>>>> main
     }
 }
 
@@ -233,11 +219,7 @@ function checkGameEnd() {
         // Add a delay before showing game over
         setTimeout(function () { endQuiz(); }, 2000); // 2 second delay to let user see the last answer
     } else {
-<<<<<<< HEAD
         setTimeout(function(){loadQuestion();}, 4000); // Wait 4 seconds before loading the next question
-=======
-        setTimeout(function(){loadQuestion();}, 4000);
->>>>>>> main
     }
 }
 
@@ -307,8 +289,6 @@ function HTMLToString(textString) {
     return textString;
 }
 
-
-
 /**
  * @param sessionStorage Uses sessionStorage keys previously set.
  * @returns An object containing the quiz definitions.
@@ -326,7 +306,6 @@ function getConfig() {
 
     return config;
 }
-<<<<<<< HEAD
 
 /**
  * <--- global variables needed --->
@@ -380,5 +359,3 @@ function getConfig() {
 
     }
  */
-=======
->>>>>>> main
