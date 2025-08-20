@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function validateName(e) {
+
     // prevents default form submission for JS logic
     e.preventDefault();
     // grabs the name the user entered for the DOM and removes whitespace

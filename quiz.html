@@ -37,12 +37,12 @@
 
     <body>
         <main>
-            <section class="quiz-section col-lg-8 col-md-10 col-12 mx-auto">
-                <div class="container" id="main-quiz-container">
+            <section class="quiz-section col-lg-8 col-md-10 col-12 mx-auto" id="main-quiz-container">
                     <div class="container">
                         <!-- Header -->
                         <div
                             class="quiz-header d-flex justify-content-center align-items-center"
+                            id="quiz-header"
                         >
                             <h1
                                 class="quiz-title text-center"
@@ -130,11 +130,10 @@
                         </button>
                         <button
                             type="button"
-                            id="play-again"
+                            id="end-Quiz-btn"
                             class="btn btn-lg col-12 col-md-4 col-xl-3"
-                            href="index.html"
                         >
-                            Restart Quiz
+                            End Quiz
                         </button>
                     </div>
                 </div>
@@ -166,11 +165,11 @@
                         <p id="final-score" class="score text-center">
                             <strong>Final Score is: ?</strong>
                         </p>
-                        <p
-                            id="total-questions"
-                            class="questionsNum text-center"
-                        >
-                            <strong>Total Questions: ?</strong>
+                        <p id="final-questions" class="questions text-center">
+                            <strong>Questions Answered: ?</strong>
+                        </p>
+                        <p class="text-center">
+                            Thank you for participating in the quiz!
                         </p>
                     </div>
                     <div
@@ -182,7 +181,7 @@
                             class="btn btn-lg col-12 col-md-4 col-xl-3"
                             href="index.html"
                         >
-                            Restart Quiz
+                            Play Again
                         </button>
                     </div>
                 </div>
