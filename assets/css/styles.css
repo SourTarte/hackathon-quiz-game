@@ -180,10 +180,15 @@ main {
     color: #fff;
 }
 /* Header */
+
+#quiz-header {
+    margin-top: 0%
+}
 .quiz-header h1 {
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--text-color);
+    margin-top: 0;
 }
 
 /* Score and Timer */
@@ -280,8 +285,8 @@ main {
 /* Answer Display */
 .quiz-answer {
     font-size: 1rem;
-    margin-bottom: 3rem;
-    margin-top: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
     color: #2c3e50;
 }
 

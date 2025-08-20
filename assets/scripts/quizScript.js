@@ -46,10 +46,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document
         .querySelector("#check-button")
         .addEventListener("click", checkAnswer);
-        //.addEventListener("click", endQuiz);
 
-
-
+    // Add event listener for the End Quiz button
+    const endQuizBtn = document.querySelector("#end-Quiz-btn");
+    if (endQuizBtn) {
+        endQuizBtn.addEventListener("click", function() {
+            console.log("End Quiz button clicked!");
+            endQuiz();
+        });
+    } else {
+        console.error("End Quiz button not found!");
+    }
 });
 
 document.getElementById("check-answer").addEventListener("click", (event) => {
@@ -130,11 +137,11 @@ function checkAnswer() {
     // Check if correct and update UI
     if (selectedAnswer === correctAnswer) {
         console.log("answer is correct");
-        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i> Correct Answer!</p>`;
+        //resultElement.innerHTML = `<p><i class="fa-regular fa-circle-check"></i> Correct Answer!</p>`;
         score++;
     } else {
         console.log("answer is incorrect");
-        resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</p>`;
+        //resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</p>`;
     }
 
     updateScoreDisplay(score, totalQuestionAmount);
@@ -181,17 +188,34 @@ function updateScoreDisplay(score, totalQuestionAmount) {
 }
 
 function checkGameEnd() {
-    if (totalQuestionsAsked === totalQuestionAmount) {
-
+    console.log(`Questions asked: ${totalQuestionsAsked}, Total questions: ${totalQuestionAmount}`);
+    
+    if (totalQuestionsAsked >= parseInt(totalQuestionAmount)) {
+        // Add a delay before showing game over
+        setTimeout(function () { endQuiz(); }, 2000); // 2 second delay to let user see the last answer
     } else {
-        setTimeout(function(){loadQuestion();}, 4000);
-
-
+        setTimeout(function(){loadQuestion();}, 4000); // Wait 4 seconds before loading the next question
     }
-    /*
-    1. if totalQuestionsAsked === gameLength, end the game
-    2. else, ask another question
-    */
+}
+
+function endQuiz() {
+    // Hide the quiz section
+    const quizSection = document.getElementById("main-quiz-container");
+    quizSection.setAttribute("hidden", true);
+
+    // Show results page
+    const resultsContainer = document.getElementById("main-results-container");
+    resultsContainer.removeAttribute("hidden");
+
+    // Display the final score
+    const finalScore = document.getElementById("final-score");
+    finalScore.innerHTML = `<strong>Final Score is: ${score}</strong>`;
+
+    // Display total questions answered
+    const totalQuestions = document.getElementById("final-questions");
+    totalQuestions.innerHTML = `<strong>Questions Answered: ${totalQuestionsAsked}</strong>`;
+
+    console.log(`Final Score: ${score}/${totalQuestionsAsked}`);
 }
 
 function selectOption() {
@@ -227,21 +251,6 @@ function HTMLToString(textString) {
     return textString;
 }
 
-function endQuiz() {
-    /*if (totalQuestionsAsked > totalQuestionAmount) {
-        // Show results page
-        const resultsContainer = document.getElementById("main-results-container");
-        resultsContainer.removeAttribute("hidden");
-
-        // Hide the quiz section
-        const quizSection = document.querySelector(".quiz-section");
-        quizSection.setAttribute("hidden", true);
-
-        // Display the final score
-        const finalScore = document.getElementById("final-score");
-        finalScore.innerHTML = `Your final score is ${score} out of ${totalQuestionAmount}.`;
-*/
-    }
 
 
 function startTimer() {}
@@ -308,7 +317,7 @@ function getConfig() {
     }
 
     restartQuiz() {
-    }w
+    }
 
     startTimer(){
 
