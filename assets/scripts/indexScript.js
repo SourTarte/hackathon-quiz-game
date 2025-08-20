@@ -7,7 +7,7 @@ const triviaType = document.getElementById("trivia-type");
 
 document.addEventListener("DOMContentLoaded", () => {
     document
-        .querySelector("#validateUsernameBtn")
+        .querySelector("#validate-button")
         .addEventListener("click", validateName);
 });
 
@@ -18,9 +18,9 @@ function validateName(e) {
     const username = document.querySelector("#username").value.trim();
     /*
     conditional that uses method to check for correct name length and regex pattern for the absence of digits
+    if username doesn't have at least two characters, OR a number
     */
     if (username.length < 2 || !/\d/.test(username)) {
-        // looks for pre-existing error message, returns null otherwise
         let errorMsg = document.getElementById("username-error");
         // if error message does not already exist
         if (!errorMsg) {
@@ -58,7 +58,7 @@ function validateName(e) {
     const modal = document.getElementById("quizConfigModal");
     const bootstrapModal = new bootstrap.Modal(modal);
     bootstrapModal.show();
-    };
+};
 
 document
     .getElementById("playButton")
@@ -73,7 +73,7 @@ document
         console.log("set config");
         window.location.href = "quiz.html";
         console.log("set window href");
-    });
+});
 
 /**
  * Sets session variables to the quiz config options selected
@@ -86,8 +86,9 @@ function setConfig(questionCount, category, difficulty, type) {
 
   // store the display name of the category, otherwise only value number can be referenced
   const categorySelect = document.getElementById('trivia-category');
-  const selectedOption = categorySelect.options[categorySelect.selectedIndex];
-  const categoryDisplayName = selectedOption.textContent; // gets e.g. "Animals" instead of "27"
+  const categoryDisplayName = categorySelect.options[categorySelect.selectedIndex].textContent;
+  //const selectedOption = categorySelect.options[categorySelect.selectedIndex];
+  //const categoryDisplayName = selectedOption.textContent; // gets e.g. "Animals" instead of "27"
   sessionStorage.setItem('categoryName', categoryDisplayName);
 }
 
