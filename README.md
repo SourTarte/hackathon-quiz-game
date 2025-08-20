@@ -115,3 +115,35 @@ After completing a quiz, players are shown a clear results page that provides in
 - **Friendly Closing Note:** Thanks the player for participating, enhancing user engagement.  
  
 > ![Quiz Results](./docs/screenshots/result_page.png)
+## Wireframes
+
+Before moving to development, the team created wireframes for desktop, tablet, and mobile views.  
+These helped us quickly iterate on layout ideas, ensure responsiveness, and keep a consistent structure across devices.  
+
+**Desktop Wireframe**  
+![Desktop Wireframe](./docs/screenshots/desktop.png)
+
+**Mobile Wireframe**  
+![Mobile Wireframe](./docs/screenshots/mobile.png)
+
+**Tablet Wireframe**  
+![Tablet Wireframe](./docs/screenshots/tablet.png)
+
+These wireframes evolved into the final polished UI showcased above, but they gave us a solid foundation to work quickly and collaboratively.  
+
+## Project Management (Agile Board)
+
+To keep our team organized during the hackathon, we used a **Kanban board** on GitHub Projects.  
+This helped us prioritize tasks, track progress, and stay aligned as a team working under tight deadlines.  
+
+**Board Columns:**
+- **To Do:** Tasks that were identified but not yet started.  
+- **In Progress:** Tasks currently being developed.  
+- **Done:** Completed features that were merged and tested.  
+
+**Prioritization:**
+- We used labels like *must-have*, *should-have*, and *could-have* to prioritize tasks.  
+- Critical features (e.g., Welcome Page, Accessibility) were tackled first to ensure core functionality.  
+- Enhancements and nice-to-have features were added later if time allowed.  
+> ![Kanban Board](./docs/screenshots/project_board.png)
+
