@@ -147,3 +147,31 @@ This helped us prioritize tasks, track progress, and stay aligned as a team work
 - Enhancements and nice-to-have features were added later if time allowed.  
 > ![Kanban Board](./docs/screenshots/project_board.png)
 
+## Design Choices – Color Palette
+
+A consistent and accessible color scheme was chosen to balance playfulness with readability.  
+The palette combines warm, inviting tones with strong contrasts for key actions (like answering questions or starting the quiz).  
+
+**Color Palette:**
+- **#231F20 – Raisin Black:** Used for primary text, ensuring high contrast.  
+- **#BB4430 – Persian Red:** Accent color for buttons and highlights (e.g., difficulty, category).  
+- **#7EBDC2 – Verdigris:** Background elements and score tracker for a calm contrast.  
+- **#F3DFA2 – Vanilla:** Light, warm background for sections to improve readability.  
+- **#EFE6DD – Linen:** Neutral base background to support a clean layout.  
+  
+> ![Color Palette](./docs/screenshots/colour_palette.webp)
+
+**Why these colors?**
+- Ensure **contrast** and **legibility** across devices.  
+- Create a **friendly, modern look** that reflects fun and challenge.  
+- Provide a clear **visual hierarchy**, where red signals importance and blue/neutral tones balance the interface.  
+To complement the color palette, we selected clean and modern fonts that enhance readability and provide a friendly look for the quiz.
+
+**Fonts Used:**
+- **Primary Font – Inter**  
+  Used for headings and key UI elements. Inter is modern, geometric, and highly legible across screen sizes.  
+
+- **Secondary Font – Nunito**  
+  Used for body text and supporting content. Nunito adds a softer, rounded feel that makes the quiz interface more approachable.  
+
+
