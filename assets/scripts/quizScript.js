@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document
         .querySelector("#check-button")
         .addEventListener("click", checkAnswer);
+        //.addEventListener("click", endQuiz);
 
 
 
@@ -226,9 +227,22 @@ function HTMLToString(textString) {
     return textString;
 }
 
-function restartQuiz() {
+function endQuiz() {
+    /*if (totalQuestionsAsked > totalQuestionAmount) {
+        // Show results page
+        const resultsContainer = document.getElementById("main-results-container");
+        resultsContainer.removeAttribute("hidden");
 
-}
+        // Hide the quiz section
+        const quizSection = document.querySelector(".quiz-section");
+        quizSection.setAttribute("hidden", true);
+
+        // Display the final score
+        const finalScore = document.getElementById("final-score");
+        finalScore.innerHTML = `Your final score is ${score} out of ${totalQuestionAmount}.`;
+*/
+    }
+
 
 function startTimer() {}
 
