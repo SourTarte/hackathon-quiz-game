@@ -230,10 +230,6 @@ function restartQuiz() {
 
 }
 
-function startTimer() {}
-
-function endTimer() {}
-
 /**
  * @param sessionStorage Uses sessionStorage keys previously set.
  * @returns An object containing the quiz definitions.
