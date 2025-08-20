@@ -94,7 +94,7 @@ async function loadQuestion() {
     document.getElementById("answer").innerHTML = "";
 
     const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
-    
+
     const result = await fetch(`${APIUrl}`);
     const data = await result.json();
     console.log(data.results[0]);
@@ -113,7 +113,7 @@ function displayQuestion(data) {
     let incorrectAnswers = data.incorrect_answers;
     let allAnswers = incorrectAnswers;
 
-    
+
 
     //splice in the correctAnswer at a random point in the allAnswers array
     if(type === "&type=multiple") {
@@ -121,11 +121,11 @@ function displayQuestion(data) {
             Math.random() * data.incorrect_answers.length,
             0, data.correct_answer
         );
-    } else { 
+    } else {
         let isAnswerTrue = (data.correct_answer === "True");
         allAnswers.splice(!isAnswerTrue, 0, correctAnswer); //stops mixing up true/false answers
     }
-    
+
 
     //gets and sets the html of the question text
     let questionTextElement = document.getElementById("question");
@@ -214,7 +214,7 @@ function updateScoreDisplay(score, totalQuestionAmount) {
 
 function checkGameEnd() {
     console.log(`Questions asked: ${totalQuestionsAsked}, Total questions: ${totalQuestionAmount}`);
-    
+
     if (totalQuestionsAsked >= parseInt(totalQuestionAmount)) {
         // Add a delay before showing game over
         setTimeout(function () { endQuiz(); }, 2000); // 2 second delay to let user see the last answer
@@ -234,7 +234,7 @@ function endQuiz() {
 
     // Display the final score
     const finalScore = document.getElementById("final-score");
-    finalScore.innerHTML = `<strong>Final Score is: ${score}</strong>`;
+    finalScore.innerHTML = `<strong>${config.username}, your Final Score is: ${score}</strong>`;
 
     // Display total questions answered
     const totalQuestions = document.getElementById("final-questions");
@@ -273,7 +273,7 @@ function selectOption() {
 function HideUnusedButtons(){
     if(type === "&type=boolean") {
         console.log("Game is true/false, hiding buttons");
-        
+
         let optionButtons = document.getElementById("quiz-options").children;
         console.log(optionButtons);
         optionButtons[2].setAttribute("hidden", "true");
