@@ -30,22 +30,21 @@ let totalQuestionsAsked = 0;
 let totalQuestionAmount = sessionStorage.getItem("questionCount");
 let score = 0;
 let isChecked = false;
-let canLoadQuestion = false;
 
 //element queries
 let resultElement = document.getElementById("correct-score");
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    // calls function that displays username dynamically
-    displayUsername(`${config.username}`);
+    HideUnusedButtons(); // If the game is true/false, hides the unused 3rd and 4th buttons
+    displayUsername(`${config.username}`); // calls function that displays username dynamically
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
-    // call the check answer function when user clicks the check answer btn
-    updateScoreDisplay(score, totalQuestionAmount);
+    updateScoreDisplay(score, totalQuestionAmount); // call the check answer function when user clicks the check answer btn
     displayCategory(category);
     document
-        .querySelector("#check-button")
+        .querySelector("#check-answer")
         .addEventListener("click", checkAnswer);
+<<<<<<< HEAD
 
     // Add event listener for the End Quiz button
     const endQuizBtn = document.querySelector("#end-Quiz-btn");
@@ -57,6 +56,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     } else {
         console.error("End Quiz button not found!");
     }
+=======
+>>>>>>> main
 });
 
 document.getElementById("check-answer").addEventListener("click", (event) => {
@@ -96,6 +97,7 @@ async function loadQuestion() {
     document.getElementById("answer").innerHTML = "";
 
     const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
+    
     const result = await fetch(`${APIUrl}`);
     const data = await result.json();
     console.log(data.results[0]);
@@ -103,37 +105,66 @@ async function loadQuestion() {
 }
 
 function displayQuestion(data) {
+    //increments the current question number text
     ++totalQuestionsAsked;
     document.getElementById(
         "question-number"
     ).innerHTML = `Question ${totalQuestionsAsked} of ${totalQuestionAmount}`;
 
+    //sets the answer variables to the proper values via the returned API data
     correctAnswer = data.correct_answer;
-    let allAnswers = data.incorrect_answers;
-    allAnswers.splice(
-        Math.random() * data.incorrect_answers.length,
-        0,
-        data.correct_answer
-    );
+    let incorrectAnswers = data.incorrect_answers;
+    let allAnswers = incorrectAnswers;
+
+    
+
+    //splice in the correctAnswer at a random point in the allAnswers array
+    if(type === "&type=multiple") {
+        allAnswers.splice(
+            Math.random() * data.incorrect_answers.length,
+            0, data.correct_answer
+        );
+    } else { 
+        let isAnswerTrue = (data.correct_answer === "True");
+        allAnswers.splice(!isAnswerTrue, 0, correctAnswer); //stops mixing up true/false answers
+    }
+    
 
     //gets and sets the html of the question text
     let questionTextElement = document.getElementById("question");
     questionTextElement.innerHTML = data.question;
 
+    //applies the names allAnswers to the option buttons on the quiz, setting the last two buttons to hidden if the quiz is true/false.
     let optionButtons = document.getElementById("quiz-options").children;
-    for (let i = 0; i <= optionButtons.length; i++) {
-        if (allAnswers[i] === undefined) {
-            optionButtons[i].hidden = true;
-        } else {
-            optionButtons[i].innerHTML = allAnswers[i];
+    console.log(`There are ${optionButtons.length} option buttons`);
+
+    for (let i = 0; i < optionButtons.length; i++) {
+        if(type === "&type=boolean" && i >= 2) { //if gametype is true/false AND it's the 3rd or 4th iteration
+            console.log(`type is true/false and i is ${i}. Continuing`);
+            continue;
+        } else if (type === "&type=multiple") {
+            console.log(`type is multiple and it's the button num ${i}`);
+            if(optionButtons[i].hasAttribute("hidden")) {
+                console.log(`button num ${i} is hidden and shouldn't be`);
+                setAttribute("hidden", false);
+            } else {console.log(`button num ${i} should be and is hidden`);}
         }
+
+        if(!optionButtons[i].hasAttribute("hidden")) {
+            optionButtons[i].innerHTML = allAnswers[i];
+        } else {
+            console.log("Not setting text for hidden object");
+        };
     }
 }
 
 function checkAnswer() {
-    console.log("checking answer");
-    isChecked = true;
+    if(isChecked == false) // If this is removed, some interaction with fontawesome's code causes multiple API calls, DO NOT REMOVE
+    {
+        console.log("checking answer");
+        isChecked = true;
 
+<<<<<<< HEAD
     // Check if correct and update UI
     if (selectedAnswer === correctAnswer) {
         console.log("answer is correct");
@@ -142,14 +173,22 @@ function checkAnswer() {
     } else {
         console.log("answer is incorrect");
         //resultElement.innerHTML = `<p><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</p>`;
+=======
+        // Check if correct and update UI
+        if (selectedAnswer === correctAnswer) {
+            console.log("answer is correct");
+            score++;
+        } else {
+            console.log("answer is incorrect");
+        }
+
+        updateScoreDisplay(score, totalQuestionAmount);
+
+        updateAnswerDisplay(selectedAnswer, correctAnswer);
+
+        checkGameEnd();
+>>>>>>> main
     }
-
-    updateScoreDisplay(score, totalQuestionAmount);
-
-    updateAnswerDisplay(selectedAnswer, correctAnswer);
-
-    checkGameEnd();
-
 }
 
 
@@ -157,10 +196,10 @@ function updateAnswerDisplay(selectedAnswer, correctAnswer) {
     // Display the result based on whether the answer is correct or not
     if (selectedAnswer === correctAnswer) {
             const questionAnswer = document.getElementById("answer");
-            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i>   Correct Answer!</h2>`;
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i> Correct Answer!</h2>`;
     } else {
-       const questionAnswer = document.getElementById("answer");
-            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i>   Incorrect answer: ${correctAnswer}</h2>`;
+            const questionAnswer = document.getElementById("answer");
+            questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</h2>`;
     }
 
     // Update the answer text
@@ -194,7 +233,11 @@ function checkGameEnd() {
         // Add a delay before showing game over
         setTimeout(function () { endQuiz(); }, 2000); // 2 second delay to let user see the last answer
     } else {
+<<<<<<< HEAD
         setTimeout(function(){loadQuestion();}, 4000); // Wait 4 seconds before loading the next question
+=======
+        setTimeout(function(){loadQuestion();}, 4000);
+>>>>>>> main
     }
 }
 
@@ -245,6 +288,19 @@ function selectOption() {
     });
 }
 
+function HideUnusedButtons(){
+    if(type === "&type=boolean") {
+        console.log("Game is true/false, hiding buttons");
+        
+        let optionButtons = document.getElementById("quiz-options").children;
+        console.log(optionButtons);
+        optionButtons[2].setAttribute("hidden", "true");
+        optionButtons[3].setAttribute("hidden", "true");
+    } else {
+        console.log("Game isn't true/false, no changes needed")
+    }
+}
+
 // to convert html entities into normal text of correct answer if there is any
 function HTMLToString(textString) {
     let doc = new DOMParser().parseFromString(textString, "text/html");
@@ -252,10 +308,6 @@ function HTMLToString(textString) {
 }
 
 
-
-function startTimer() {}
-
-function endTimer() {}
 
 /**
  * @param sessionStorage Uses sessionStorage keys previously set.
@@ -274,6 +326,7 @@ function getConfig() {
 
     return config;
 }
+<<<<<<< HEAD
 
 /**
  * <--- global variables needed --->
@@ -327,3 +380,5 @@ function getConfig() {
 
     }
  */
+=======
+>>>>>>> main
