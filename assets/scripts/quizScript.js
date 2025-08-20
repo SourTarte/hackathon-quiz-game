@@ -255,8 +255,11 @@ function selectOption() {
 
     // find all <li> elements inside the options container and loop through each one
     optionsElement.querySelectorAll("li").forEach(function (option) {
-        // attach a click event listener to each individual option
-        option.addEventListener("click", function () {
+        // Make the option focusable with keyboard navigation
+        option.setAttribute("tabindex", "0");
+
+        // Function to handle option selection
+        function handleSelection() {
             // check if any option currently has the 'selected' class
             if (optionsElement.querySelector(".selected")) {
                 // Find the currently selected option element
@@ -272,6 +275,17 @@ function selectOption() {
 
             selectedAnswer = option.innerText;
             console.log(selectedAnswer);
+        }
+
+        // attach a click event listener to each individual option
+        option.addEventListener("click", handleSelection);
+
+        // attach keyboard event listener for Enter and Space keys
+        option.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent default behavior for space key
+                handleSelection();
+            }
         });
     });
 }
