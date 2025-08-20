@@ -87,8 +87,7 @@ function setConfig(questionCount, category, difficulty, type) {
   // store the display name of the category, otherwise only value number can be referenced
   const categorySelect = document.getElementById('trivia-category');
   const categoryDisplayName = categorySelect.options[categorySelect.selectedIndex].textContent;
-  //const selectedOption = categorySelect.options[categorySelect.selectedIndex];
-  //const categoryDisplayName = selectedOption.textContent; // gets e.g. "Animals" instead of "27"
+
   sessionStorage.setItem('categoryName', categoryDisplayName);
 }
 
