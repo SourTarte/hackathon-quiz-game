@@ -231,3 +231,6 @@ Quizia is deployed via **GitHub Pages** to make the application easily accessibl
 - **Maintenance:** Any new commit to `main` automatically updates the live site within minutes.  
 
 > 🔗 **Live Demo:** [Quizia Online](https://sourtarte.github.io/hackathon-quiz-game/)
+
+## Code Organization 
+To keep the project maintainable, we followed best practices in structuring and documenting code. **Practices:** - HTML, CSS, and JS separated into external files. - Code divided into commented sections for readability. - Consistent indentation, spacing, and file naming. - Removed commented-out code before deployment.
