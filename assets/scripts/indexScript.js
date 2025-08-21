@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function validateName(e) {
-
     // prevents default form submission for JS logic
     e.preventDefault();
     // grabs the name the user entered for the DOM and removes whitespace
@@ -59,7 +58,7 @@ function validateName(e) {
     const modal = document.getElementById("quizConfigModal");
     const bootstrapModal = new bootstrap.Modal(modal);
     bootstrapModal.show();
-};
+}
 
 document
     .getElementById("playButton")
@@ -74,27 +73,28 @@ document
         console.log("set config");
         window.location.href = "quiz.html";
         console.log("set window href");
-});
+    });
 
 /**
  * Sets session variables to the quiz config options selected
  */
 function setConfig(questionCount, category, difficulty, type) {
-  sessionStorage.setItem('questionCount', questionCount);
-  sessionStorage.setItem('category', category); // this is still the value (e.g. "27")
-  sessionStorage.setItem('difficulty', difficulty);
-  sessionStorage.setItem('type', type);
+    sessionStorage.setItem("questionCount", questionCount);
+    sessionStorage.setItem("category", category); // this is still the value (e.g. "27")
+    sessionStorage.setItem("difficulty", difficulty);
+    sessionStorage.setItem("type", type);
 
-  // store the display name of the difficulty, otherwise only value number can be referenced
-  const difficultySelect = document.querySelector('#trivia-difficulty')
-  const difficultyDisplayName = difficultySelect.options[difficultySelect.selectedIndex].textContent;
+    // store the display name of the difficulty, otherwise only value number can be referenced
+    const difficultySelect = document.querySelector("#trivia-difficulty");
+    const difficultyDisplayName =
+        difficultySelect.options[difficultySelect.selectedIndex].textContent;
 
-  sessionStorage.setItem('difficultyName', difficultyDisplayName);
+    sessionStorage.setItem("difficultyName", difficultyDisplayName);
 
-  // store the display name of the category, otherwise only value number can be referenced
-  const categorySelect = document.getElementById('trivia-category');
-  const categoryDisplayName = categorySelect.options[categorySelect.selectedIndex].textContent;
+    // store the display name of the category, otherwise only value number can be referenced
+    const categorySelect = document.getElementById("trivia-category");
+    const categoryDisplayName =
+        categorySelect.options[categorySelect.selectedIndex].textContent;
 
-  sessionStorage.setItem('categoryName', categoryDisplayName);
+    sessionStorage.setItem("categoryName", categoryDisplayName);
 }
-
