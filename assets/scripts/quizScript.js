@@ -129,8 +129,8 @@ async function loadQuestion() {
         }
 
         allQuestions.push(...data.results); // Add new questions to our global array
-        displayQuestion(allQuestions[totalQuestionsAsked]);
         displayCategory(allQuestions[totalQuestionsAsked].category);
+        displayQuestion(allQuestions[totalQuestionsAsked]);
 
         const dataPreview = allQuestions[totalQuestionsAsked];
         console.log(dataPreview);
@@ -158,7 +158,8 @@ function showNextQuestion() {
     // Reset the answer element
     document.getElementById("answer").innerHTML = "";
 
-    // Display the next question from our stored array
+    // Display the next category and question from our stored array
+    displayCategory(allQuestions[totalQuestionsAsked].category);
     displayQuestion(allQuestions[totalQuestionsAsked]);
 }
 
