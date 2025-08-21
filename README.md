@@ -215,4 +215,19 @@ To ensure the quality and reliability of Quizia, we validated both code and user
 
 - **Responsive Testing:**  
   Tested across multiple devices and screen sizes using Chrome DevTools and manual resizing.  
-  The layout adapts without loss of functionality.  
+  The layout adapts without loss of functionality.
+
+   ## Deployment
+
+Quizia is deployed via **GitHub Pages** to make the application easily accessible to all users directly in their browsers.
+
+- **Version Control:** The project was managed with Git and GitHub, using feature branches and Pull Requests to enable collaborative development.  
+- **Hosting Platform:** Deployed using **GitHub Pages**, a free and reliable hosting service that integrates seamlessly with GitHub repositories.  
+- **Deployment Procedure:**  
+  1. Push the latest code to the `main` branch.  
+  2. GitHub Pages automatically serves the content from the repository root.  
+  3. Ensure that `index.html` and all assets use **relative paths** so they load correctly on GitHub Pages.  
+- **Consistency:** The live deployment matches the development version, with all interactive features fully functional.  
+- **Maintenance:** Any new commit to `main` automatically updates the live site within minutes.  
+
+> 🔗 **Live Demo:** [Quizia Online](https://sourtarte.github.io/hackathon-quiz-game/)
