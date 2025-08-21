@@ -1,4 +1,5 @@
 /* Google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
 body {
     height: 100vh;
@@ -7,9 +8,19 @@ body {
     color: var(--text-color);
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--primary-font);
+    font-weight: 400 !important;
+}
+
+p {
+    font-family: var(--primary-font);
+    font-weight: 300 !important;
+}
+
 /* General styles */
 :root {
-    --primary-font: "Inter", system-ui, sans-serif;
+    --primary-font: "Montserrat", 'sans-serif';
     --secondary-font: "Nunito", system-ui, sans-serif;
     /* TODO(team): define colors*/
     --primary-color: #7ebdc2;
@@ -366,6 +377,10 @@ main {
     list-style: none;
     padding: 0;
     margin-bottom: 1.5rem;
+
+    font-family: var(--primary-font);
+    font-weight: 500;
+    font-size: 20pt;
 }
 
 .quiz-option {
@@ -443,6 +458,16 @@ main {
     margin-top: 0 !important;
 }
 
+.hero-section {
+    background-image: url("../images/mobile-background.jpg");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 70vh;
+    position: relative;
+}
+
 /* medium devices (tablet, 320px and up) */
 @media screen and (min-width: 320px) {
     .quiz-section {
@@ -491,6 +516,8 @@ main {
         align-content: center;
     }
 }
+
+
 /* medium devices (tablet, 375px and up) */
 @media screen and (min-width: 375px) {
     #quiz-difficulty,
@@ -534,6 +561,10 @@ main {
         display: flex;
         flex-direction: column;
     }
+
+    .hero-section {
+        background-image: url("../images/background.jpg");
+    }
 }
 
 /* laptop devices (laptop, 1024px and up) */
@@ -571,6 +602,10 @@ main {
     }
     .results-body .thank-you-message {
         font-size: 1.6rem;
+    }
+
+    .hero-section {
+        background-image: url("../images/background.jpg");
     }
 }
 
@@ -663,16 +698,6 @@ main {
 
 .play-Again-btn {
     animation: fadeInUp 0.6s ease-out 1.6s both;
-}
-
-.hero-section {
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
 }
 
 .input-narrow {
