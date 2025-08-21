@@ -48,9 +48,9 @@ let allQuestions = []; // Array to store all fetched questions
 //element queries
 let resultElement = document.getElementById("correct-score");
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    // Fetch the session token first
-    fetchSessionToken();
+document.addEventListener("DOMContentLoaded", async (event) => {
+    // Fetch the session token first and wait for it to complete
+    await fetchSessionToken();
     HideUnusedButtons(); // If the game is true/false, hides the unused 3rd and 4th buttons
     displayUsername(`${config.username}`); // calls function that displays username dynamically
     loadQuestion();
@@ -282,7 +282,7 @@ function displayDifficulty() {
     const difficultyElement = document.getElementById("quiz-difficulty");
 
     // Set the innerHTML of the element to display the difficulty name
-    difficultyElement.innerHTML = `<h3>Difficulty: ${difficultyName}</h3>`;
+    difficultyElement.innerHTML = `Difficulty: ${difficultyName}`;
     }
 
 /**
