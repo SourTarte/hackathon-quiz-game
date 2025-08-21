@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
     updateScoreDisplay(score, totalQuestionAmount); // call the check answer function when user clicks the check answer btn
-    displayCategory();
+    //displayCategory();
     displayDifficulty();
     document
         .querySelector("#check-answer")
@@ -96,6 +96,8 @@ function displayUsername(username) {
  * receives the result as a new variable, data.
  */
 async function loadQuestion() {
+    displayCategory(allQuestions[totalQuestionsAsked].category);
+
     if (selectedAnswer !== "") {
         document
             .getElementById("quiz-options")
@@ -118,6 +120,7 @@ async function loadQuestion() {
     try {
     const result = await fetch(APIUrl);
     const data = await result.json();
+    console.log("data result is");
         console.log("API Response:", data);
 
         // Check for the main error: not enough questions available
@@ -262,9 +265,9 @@ function updateAnswerDisplay(selectedAnswer, correctAnswer) {
     answerDisplay = document.getElementById("answer");
 }
 
-function displayCategory() {
+function displayCategory(categoryName) {
     // get the user-friendly category name from sessionStorage, instead of a number
-    const categoryName = sessionStorage.getItem("categoryName");
+    //const categoryName = sessionStorage.getItem("categoryName");
 
     // Get the element where the category will be displayed
     const categoryElement = document.getElementById("quiz-category");
