@@ -74,12 +74,6 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     }
 });
 
-document.getElementById("check-answer").addEventListener("click", (event) => {
-    if (selectedAnswer !== "" && !isChecked) {
-        checkAnswer();
-    }
-});
-
 /**
  * Displays the user's username in the quiz interface.
  * @param {string} username - The username to display, typically retrieved from sessionStorage
@@ -248,6 +242,10 @@ function checkAnswer() {
             // Check if correct and increment score
             console.log("answer is correct");
             score++;
+        } else if (selectedAnswer === "" || selectedAnswer == null) {
+            // Do nothing if no answer is selected
+            isChecked = false;
+            return;
         } else {
             console.log("answer is incorrect");
         }
