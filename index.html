@@ -39,14 +39,9 @@
                 <span class="text-dark">Quizia</span>
               </span>
           </a>
-          <ul id="nav-ul-md" class="d-none d-md-block d-lg-none">
-                        <!-- out of dropdown home link for tablets only -->
-                        <li
-                            class="nav-item d-none d-md-block d-lg-none ms-auto"
-                        >
-                            <a id="nav-home-md" class="nav-link mt-3" href="index.html"
-                                >Home</a
-                            >
+           <a class="nav-link mt-1 d-none d-md-block d-lg-none ms-auto" href="index.html"
+                                >Home</a>
+                            <a class="nav-link d-none d-md-block d-lg-none mt-1 mx-3" href="#how-it-works-section">How it works</a>
                         </li>
           </ul>
 
@@ -68,6 +63,9 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#how-it-works-section">How it works</a>
               </li>
             </ul>
           </div>
@@ -109,35 +107,36 @@
         </div>
       </section>
           <!-- How It Works Section -->
-          <section class="how-it-works-section py-5 bg">
+          <section id="how-it-works-section" class="how-it-works-section py-5 bg">
+            <h2 class="text-center mb-5">How It Works</h2>
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-12 col-md-4 mb-4 mb-md-0">
-                  <div class="card h-100 shadow-sm text-center">
+                  <article class="card h-100 shadow-sm text-center">
                     <div class="card-body d-flex flex-column align-items-center justify-content-center">
                       <i class="bi bi-lightbulb-fill fa-3x text-primary mb-3"></i>
-                      <h5 class="card-title fw-bold mb-2">How It Works</h5>
+                      <h3 class="card-title fw-bold mb-2">Step 1</h3>
                       <p class="card-text">First, enter your name above. After this, you will be presented with a few quiz options. After that, just click <strong>Play!</strong></p>
                     </div>
-                  </div>
+                  </article>
                 </div>
                 <div class="col-12 col-md-4 mb-4 mb-md-0">
-                  <div class="card h-100 shadow-sm text-center">
+                  <article class="card h-100 shadow-sm text-center">
                     <div class="card-body d-flex flex-column align-items-center justify-content-center">
                       <i class="bi bi-patch-question-fill fa-3x text-warning mb-3"></i>
-                      <h5 class="card-title fw-bold mb-2">Pick 1 of 4 or True/False</h5>
+                      <h3 class="card-title fw-bold mb-2">Step 2</h3>
                       <p class="card-text">Choose one answer from four options for each question or play True/False. Only one is correct, either way!</p>
                     </div>
-                  </div>
+                  </article>
                 </div>
                 <div class="col-12 col-md-4">
-                  <div class="card h-100 shadow-sm text-center">
+                  <article class="card h-100 shadow-sm text-center">
                     <div class="card-body d-flex flex-column align-items-center justify-content-center">
                       <i class="bi bi-trophy-fill fa-3x text-success mb-3"></i>
-                      <h5 class="card-title fw-bold mb-2">Get Your Score</h5>
+                      <h3 class="card-title fw-bold mb-2">Step 3</h3>
                       <p class="card-text">See your results instantly after finishing the quiz and perhaps, challenge your friends to beat it!</p>
                     </div>
-                  </div>
+                  </article>
                 </div>
               </div>
             </div>

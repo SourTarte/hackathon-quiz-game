@@ -212,7 +212,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 /* Category */
@@ -223,6 +223,17 @@ main {
     margin-bottom: 1rem;
     color: #fff;
     border-radius: 8px;
+}
+
+/* difficulty */
+#quiz-difficulty {
+    background-color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #fff;
+    border-radius: 8px;
+
 }
 
 /* Question Number */
@@ -423,4 +434,61 @@ main {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
     font-size: 2rem;
     font-weight: bold;
+}
+
+/* Focus states for buttons and inputs */
+.btn:focus,
+.btn:focus-visible,
+button:focus,
+button:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(187, 68, 48, 0.2);
+}
+
+.quiz-footer .btn:focus,
+.quiz-footer .btn:focus-visible {
+    outline: 7px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(126, 189, 194, 0.3);
+}
+
+#quizConfigModal .btn-warning:focus,
+#quizConfigModal .btn-warning:focus-visible,
+#quizConfigModal .btn-secondary:focus,
+#quizConfigModal .btn-secondary:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(187, 68, 48, 0.2);
+}
+
+#validateUsernameBtn:focus,
+#validateUsernameBtn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(126, 189, 194, 0.3);
+}
+
+input:focus,
+input:focus-visible,
+.form-control:focus,
+.form-control:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(126, 189, 194, 0.2);
+    border-color: var(--primary-color);
+}
+
+.btn-close:focus,
+.btn-close:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(187, 68, 48, 0.2);
+}
+
+.quiz-option:focus,
+.quiz-option:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(187, 68, 48, 0.2);
 }

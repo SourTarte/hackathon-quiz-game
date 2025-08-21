@@ -85,6 +85,12 @@ function setConfig(questionCount, category, difficulty, type) {
   sessionStorage.setItem('difficulty', difficulty);
   sessionStorage.setItem('type', type);
 
+  // store the display name of the difficulty, otherwise only value number can be referenced
+  const difficultySelect = document.querySelector('#trivia-difficulty')
+  const difficultyDisplayName = difficultySelect.options[difficultySelect.selectedIndex].textContent;
+
+  sessionStorage.setItem('difficultyName', difficultyDisplayName);
+
   // store the display name of the category, otherwise only value number can be referenced
   const categorySelect = document.getElementById('trivia-category');
   const categoryDisplayName = categorySelect.options[categorySelect.selectedIndex].textContent;

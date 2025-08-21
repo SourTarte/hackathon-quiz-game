@@ -3,6 +3,7 @@ let category = "";
 let difficulty = "";
 let type = "";
 let questionCount = "";
+let token = "";
 
 //Grabs the category, difficulty and type from sessionStorage.
 let config = getConfig();
@@ -17,11 +18,23 @@ difficulty =
         ? (difficulty = "")
         : (difficulty = `&difficulty=${config.difficulty}`);
 type = config.type === "any" ? (type = "") : (type = `&type=${config.type}`);
-questionCount =
-    config.questionCount === "5"
-        ? (questionCount = "")
-        // api demands "&amount=" here and not "&type="
-        : (questionCount = `&amount=${config.questionCount}`);
+
+// Function to fetch the session token
+async function fetchSessionToken() {
+    try {
+        //  make a request for a session token
+        let tokenFetch = await fetch(`https://opentdb.com/api_token.php?command=request`);
+        // retrieve it as a json
+        let tokenData = await tokenFetch.json();
+        // grab the token
+        token = tokenData.token;
+        console.log("Token fetched:", token);
+    } catch (error) {
+        console.error("Error fetching token:", error);
+        token = ""; // fallback to no token
+    }
+}
+
 
 //game dependent variables
 let selectedAnswer;
@@ -30,17 +43,21 @@ let totalQuestionsAsked = 0;
 let totalQuestionAmount = sessionStorage.getItem("questionCount");
 let score = 0;
 let isChecked = false;
+let allQuestions = []; // Array to store all fetched questions
 
 //element queries
 let resultElement = document.getElementById("correct-score");
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    // Fetch the session token first
+    fetchSessionToken();
     HideUnusedButtons(); // If the game is true/false, hides the unused 3rd and 4th buttons
     displayUsername(`${config.username}`); // calls function that displays username dynamically
     loadQuestion();
     selectOption(); // Call selectOption to set up event listeners
     updateScoreDisplay(score, totalQuestionAmount); // call the check answer function when user clicks the check answer btn
-    displayCategory(category);
+    displayCategory();
+    displayDifficulty();
     document
         .querySelector("#check-answer")
         .addEventListener("click", checkAnswer);
@@ -92,13 +109,69 @@ async function loadQuestion() {
     isChecked = false;
     // Reset the answer element
     document.getElementById("answer").innerHTML = "";
+    // builds API call - only include token if it exists
+    const tokenParam = token ? `&token=${token}` : "";
+    const APIUrl = `https://opentdb.com/api.php?amount=${config.questionCount}${category}${difficulty}${type}${tokenParam}`;
 
-    const APIUrl = `https://opentdb.com/api.php?amount=1${category}${difficulty}${type}`;
-    
-    const result = await fetch(`${APIUrl}`);
+    console.log("API URL:", APIUrl);
+
+    try {
+    const result = await fetch(APIUrl);
     const data = await result.json();
-    console.log(data.results[0]);
-    displayQuestion(data.results[0]);
+        console.log("API Response:", data);
+
+        // Check for the main error: not enough questions available
+        if (data.response_code === 1) {
+            displayAPIError("Not enough questions available for your settings. Try fewer questions or different options.");
+            return;
+        }
+
+    allQuestions.push(...data.results); // Add new questions to our global array
+    displayQuestion(allQuestions[totalQuestionsAsked]);
+
+    const dataPreview = allQuestions[totalQuestionsAsked];
+    //dataPreview.correct_answer = null; // anticheat, comment out this line to show correct answer in console messages
+    console.log(dataPreview);
+    } catch (error) {
+        console.error("Error fetching questions:", error);
+        displayAPIError("Could not load questions. Please try again.");
+    }
+}
+
+/**
+ * Shows the next question from the stored questions array without making an API call
+ */
+function showNextQuestion() {
+    if (selectedAnswer !== "") {
+        document
+            .getElementById("quiz-options")
+            .querySelectorAll("li")
+            .forEach(function (option) {
+            option.classList.remove("selected");
+        });
+    }
+    correctAnswer = "";
+    selectedAnswer = "";
+    isChecked = false;
+    // Reset the answer element
+    document.getElementById("answer").innerHTML = "";
+
+    // Display the next question from our stored array
+    displayQuestion(allQuestions[totalQuestionsAsked]);
+}
+
+/**
+ * Displays API error messages to the user
+ * @param {string} message - The error message to display
+ */
+function displayAPIError(message) {
+    // Display error message in the question area
+    const questionElement = document.getElementById("question");
+    questionElement.innerHTML = "Error Loading Quiz";
+
+    // Display error message in the answer area
+    const answerElement = document.getElementById("answer");
+    answerElement.innerHTML = `<h3>Error: ${message}</h3>`;
 }
 
 function displayQuestion(data) {
@@ -108,12 +181,18 @@ function displayQuestion(data) {
         "question-number"
     ).innerHTML = `Question ${totalQuestionsAsked} of ${totalQuestionAmount}`;
 
+    // Check if data exists and has the required properties
+    if (!data || !data.question || !data.correct_answer || !data.incorrect_answers) {
+        console.error("Invalid question data:", data);
+        return;
+    }
+
     //sets the answer variables to the proper values via the returned API data
     correctAnswer = data.correct_answer;
     let incorrectAnswers = data.incorrect_answers;
     let allAnswers = incorrectAnswers;
 
-    
+
 
     //splice in the correctAnswer at a random point in the allAnswers array
     if(type === "&type=multiple") {
@@ -121,11 +200,11 @@ function displayQuestion(data) {
             Math.random() * data.incorrect_answers.length,
             0, data.correct_answer
         );
-    } else { 
+    } else {
         let isAnswerTrue = (data.correct_answer === "True");
         allAnswers.splice(!isAnswerTrue, 0, correctAnswer); //stops mixing up true/false answers
     }
-    
+
 
     //gets and sets the html of the question text
     let questionTextElement = document.getElementById("question");
@@ -133,18 +212,12 @@ function displayQuestion(data) {
 
     //applies the names allAnswers to the option buttons on the quiz, setting the last two buttons to hidden if the quiz is true/false.
     let optionButtons = document.getElementById("quiz-options").children;
-    console.log(`There are ${optionButtons.length} option buttons`);
 
     for (let i = 0; i < optionButtons.length; i++) {
         if(type === "&type=boolean" && i >= 2) { //if gametype is true/false AND it's the 3rd or 4th iteration
-            console.log(`type is true/false and i is ${i}. Continuing`);
             continue;
-        } else if (type === "&type=multiple") {
-            console.log(`type is multiple and it's the button num ${i}`);
-            if(optionButtons[i].hasAttribute("hidden")) {
-                console.log(`button num ${i} is hidden and shouldn't be`);
-                setAttribute("hidden", false);
-            } else {console.log(`button num ${i} should be and is hidden`);}
+        } else if (type === "&type=multiple" && optionButtons[i].hasAttribute("hidden")) {
+            setAttribute("hidden", false);
         }
 
         if(!optionButtons[i].hasAttribute("hidden")) {
@@ -158,11 +231,10 @@ function displayQuestion(data) {
 function checkAnswer() {
     if(isChecked == false) // If this is removed, some interaction with fontawesome's code causes multiple API calls, DO NOT REMOVE
     {
-        console.log("checking answer");
         isChecked = true;
+        console.log("checking answer");
 
-    // Check if correct and update UI
-        if (selectedAnswer === correctAnswer) {
+        if (selectedAnswer === correctAnswer) { // Check if correct and increment score
             console.log("answer is correct");
             score++;
         } else {
@@ -170,9 +242,7 @@ function checkAnswer() {
         }
 
         updateScoreDisplay(score, totalQuestionAmount);
-
         updateAnswerDisplay(selectedAnswer, correctAnswer);
-
         checkGameEnd();
     }
 }
@@ -204,7 +274,20 @@ function displayCategory() {
     }
 
 
-// Update counters and disable options
+function displayDifficulty() {
+    // get the user-friendly difficulty name from sessionStorage, instead of a number
+    const difficultyName = sessionStorage.getItem("difficultyName");
+
+    // Get the element where the difficulty will be displayed
+    const difficultyElement = document.getElementById("quiz-difficulty");
+
+    // Set the innerHTML of the element to display the difficulty name
+    difficultyElement.innerHTML = `<h3>Difficulty: ${difficultyName}</h3>`;
+    }
+
+/**
+ *  Updates the text for the score and question tracker elements.
+ */
 function updateScoreDisplay(score, totalQuestionAmount) {
     const scoreElement = document.getElementById("correct-score");
 
@@ -213,13 +296,11 @@ function updateScoreDisplay(score, totalQuestionAmount) {
 }
 
 function checkGameEnd() {
-    console.log(`Questions asked: ${totalQuestionsAsked}, Total questions: ${totalQuestionAmount}`);
-    
     if (totalQuestionsAsked >= parseInt(totalQuestionAmount)) {
         // Add a delay before showing game over
         setTimeout(function () { endQuiz(); }, 2000); // 2 second delay to let user see the last answer
     } else {
-        setTimeout(function(){loadQuestion();}, 4000); // Wait 4 seconds before loading the next question
+        setTimeout(function(){showNextQuestion();}, 2000); // Wait 2 seconds before showing the next question
     }
 }
 
@@ -234,7 +315,7 @@ function endQuiz() {
 
     // Display the final score
     const finalScore = document.getElementById("final-score");
-    finalScore.innerHTML = `<strong>Final Score is: ${score}</strong>`;
+    finalScore.innerHTML = `<strong>${config.username}, your Final Score is: ${score}</strong>`;
 
     // Display total questions answered
     const totalQuestions = document.getElementById("final-questions");
@@ -249,8 +330,11 @@ function selectOption() {
 
     // find all <li> elements inside the options container and loop through each one
     optionsElement.querySelectorAll("li").forEach(function (option) {
-        // attach a click event listener to each individual option
-        option.addEventListener("click", function () {
+        // Make the option focusable with keyboard navigation
+        option.setAttribute("tabindex", "0");
+
+        // Function to handle option selection
+        function handleSelection() {
             // check if any option currently has the 'selected' class
             if (optionsElement.querySelector(".selected")) {
                 // Find the currently selected option element
@@ -266,6 +350,17 @@ function selectOption() {
 
             selectedAnswer = option.innerText;
             console.log(selectedAnswer);
+        }
+
+        // attach a click event listener to each individual option
+        option.addEventListener("click", handleSelection);
+
+        // attach keyboard event listener for Enter and Space keys
+        option.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent default behavior for space key
+                handleSelection();
+            }
         });
     });
 }
@@ -273,7 +368,7 @@ function selectOption() {
 function HideUnusedButtons(){
     if(type === "&type=boolean") {
         console.log("Game is true/false, hiding buttons");
-        
+
         let optionButtons = document.getElementById("quiz-options").children;
         console.log(optionButtons);
         optionButtons[2].setAttribute("hidden", "true");
