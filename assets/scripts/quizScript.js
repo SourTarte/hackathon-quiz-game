@@ -190,12 +190,8 @@ function displayQuestion(data) {
         !data.correct_answer ||
         !data.incorrect_answers
     ) {
-<<<<<<< HEAD
         console.error("Invalid question data:", data);
         return;
-=======
-      optionButtons[i].setAttribute('hidden', false)
->>>>>>> 01140be (fix: linted code, removed unused variables)
     }
 
     //sets the answer variables to the proper values via the returned API data
@@ -222,16 +218,16 @@ function displayQuestion(data) {
     //applies the names allAnswers to the option buttons on the quiz, setting the last two buttons to hidden if the quiz is true/false.
     let optionButtons = document.getElementById("quiz-options").children;
 
-  for (let i = 0; i < optionButtons.length; i++) {
-    if (type === '&type=boolean' && i >= 2) {
-      //if gametype is true/false AND it's the 3rd or 4th iteration
-      continue
-    } else if (
-      type === '&type=multiple' &&
-      optionButtons[i].hasAttribute('hidden')
-    ) {
-      optionButtons[i].setAttribute('hidden', false)
-    }
+    for (let i = 0; i < optionButtons.length; i++) {
+        if (type === "&type=boolean" && i >= 2) {
+            //if gametype is true/false AND it's the 3rd or 4th iteration
+            continue;
+        } else if (
+            type === "&type=multiple" &&
+            optionButtons[i].hasAttribute("hidden")
+        ) {
+            setAttribute("hidden", false);
+        }
 
         if (!optionButtons[i].hasAttribute("hidden")) {
             optionButtons[i].innerHTML = allAnswers[i];
@@ -275,7 +271,6 @@ function updateAnswerDisplay(selectedAnswer, correctAnswer) {
     answerDisplay = document.getElementById("answer");
 }
 
-<<<<<<< HEAD
 function displayCategory(categoryName) {
     // get the user-friendly category name from sessionStorage, instead of a number
 
@@ -284,27 +279,6 @@ function displayCategory(categoryName) {
 
     // Set the innerHTML of the element to display the category name
     categoryElement.innerHTML = `<h3>Category: ${categoryName}</h3>`;
-=======
-function updateAnswerDisplay (selectedAnswer, correctAnswer) {
-  // Display the result based on whether the answer is correct or not
-  if (selectedAnswer === correctAnswer) {
-    const questionAnswer = document.getElementById('answer')
-    questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i> Correct Answer!</h2>`
-  } else {
-    const questionAnswer = document.getElementById('answer')
-    questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</h2>`
-  }
-}
-
-function displayCategory (categoryName) {
-  // get the user-friendly category name from sessionStorage, instead of a number
-  //const categoryName = sessionStorage.getItem("categoryName");
-
-  // Get the element where the category will be displayed
-  const categoryElement = document.getElementById('quiz-category')
-
-  // Set the innerHTML of the element to display the category name
-  categoryElement.innerHTML = `<h3>Category: ${categoryName}</h3>`
 }
 
 function displayDifficulty() {
