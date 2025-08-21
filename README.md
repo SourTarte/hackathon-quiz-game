@@ -121,7 +121,7 @@ After completing a quiz, players are shown a clear results page that provides in
 **Key Features:**
 
 -   **Congratulations Message:** Positive reinforcement for completing the quiz.
--   **Final Score:** Displays the player’s score (e.g., _Adam32, your Final Score is: 3_).
+-   **Final Score:** Displays the player’s score.
 -   **Questions Answered:** Shows how many questions were attempted out of the total (e.g., _5 Questions_).
 -   **Replay Option:** A **Play Again** button encourages replayability by letting users immediately start another quiz.
 -   **Friendly Closing Note:** Thanks the player for participating, enhancing user engagement.
@@ -215,4 +215,71 @@ To ensure the quality and reliability of Quizia, we validated both code and user
 
 - **Responsive Testing:**  
   Tested across multiple devices and screen sizes using Chrome DevTools and manual resizing.  
-  The layout adapts without loss of functionality.  
+  The layout adapts without loss of functionality.
+
+   ## Deployment
+
+Quizia is deployed via **GitHub Pages** to make the application easily accessible to all users directly in their browsers.
+
+- **Version Control:** The project was managed with Git and GitHub, using feature branches and Pull Requests to enable collaborative development.  
+- **Hosting Platform:** Deployed using **GitHub Pages**, a free and reliable hosting service that integrates seamlessly with GitHub repositories.  
+- **Deployment Procedure:**  
+  1. Push the latest code to the `main` branch.  
+  2. GitHub Pages automatically serves the content from the repository root.  
+  3. Ensure that `index.html` and all assets use **relative paths** so they load correctly on GitHub Pages.  
+- **Consistency:** The live deployment matches the development version, with all interactive features fully functional.  
+- **Maintenance:** Any new commit to `main` automatically updates the live site within minutes.  
+
+> 🔗 **Live Demo:** [Quizia Online](https://sourtarte.github.io/hackathon-quiz-game/)
+
+---
+
+## Code Organization
+
+To keep the project maintainable, we followed best practices in structuring and documenting code.
+
+**Practices:**
+- HTML, CSS, and JS separated into external files.  
+- Code divided into commented sections for readability.  
+- Consistent indentation, spacing, and file naming.  
+- Removed commented-out code before deployment.  
+
+**Project Structure:**
+Below is a screenshot of the project’s directory organization, ensuring clarity and maintainability:
+
+![Project Structure](docs/screenshots/project_structure.png)
+
+---
+
+## Error Handling 
+
+The application gracefully handles invalid or empty inputs to ensure smooth gameplay.  
+
+- **Name Input Validation:** The player must enter a name that contains at least **2 characters and 1 number**. If the criteria are not met, an error message is displayed and the quiz cannot start.  
+- **Quiz Flow Control:** Users cannot progress to the next stage without selecting an answer, ensuring the quiz logic stays consistent.  
+- **JavaScript Error Prevention:** Core functions include condition checks and loops that prevent unexpected behavior or runtime errors.  
+- **Console Safety:** During normal gameplay, the application runs without generating console errors or warnings, maintaining a clean development environment.  
+
+---
+---
+
+## Reflection on AI Usage  
+
+During development, the team leveraged **AI tools** to support the coding process, streamline debugging, and optimize performance:  
+
+- **Code Creation:** AI was used to generate the initial scaffolding for HTML. This allowed the team to dedicate more time to refining features and improving the user interface.  
+- **Debugging:** AI suggested fixes for merge conflicts and identified errors in the code, significantly reducing time spent on troubleshooting.  
+- **Performance Optimization:** AI provided recommendations to simplify CSS, resulting in cleaner and more efficient styling.  
+- **Documentation:** AI supported the drafting of this README, helping to ensure clarity, professional structure, and consistency.  
+
+**Impact on Workflow:**  
+The use of AI tools accelerated the development process during the hackathon, enabling the team to deliver a polished product under time pressure. Rather than replacing creativity, AI complemented teamwork by speeding up repetitive tasks and offering quick, practical solutions.  
+
+---
+## Acknowledgements 🎉   
+
+Big thanks to:  
+- **Our team – Curtis, Michael, Dion & Aleksandra**, for turning ideas into reality under pressure.  
+- **Hackathon mentors & organizers**, for the challenge and guidance.  
+- **AI tools**, our silent teammate during crunch time.  
+- **Players of Quizia**, because a quiz is nothing without curious minds!  
