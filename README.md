@@ -180,8 +180,9 @@ The palette combines warm, inviting tones with strong contrasts for key actions 
 To complement the color palette, we selected clean and modern fonts that enhance readability and provide a friendly look for the quiz.
 
 **Fonts Used:**
-- **Primary Font – Inter**  
-  Used for headings and key UI elements. Inter is modern, geometric, and highly legible across screen sizes.  
+- **Primary Font – Montserrat**  
+  Used for headings and key UI elements.  
 
 - **Secondary Font – Nunito**  
   Used for body text and supporting content. Nunito adds a softer, rounded feel that makes the quiz interface more approachable.  
+  
