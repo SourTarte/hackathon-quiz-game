@@ -191,7 +191,7 @@ main {
     margin-top: 0;
 }
 
-/* Score and Timer */
+/* Score
 #quiz-score-container {
     display: flex;
     justify-content: space-between;
@@ -199,20 +199,31 @@ main {
     font-size: 1rem;
     font-weight: 600;
 }
-
+/*
 #quiz-timer,
 #quiz-score {
     background-color: var(--primary-color);
     padding: 0.5rem 1rem;
     border-radius: 6px;
     margin: 0.5rem;
-}
-
+}*/
+/*
 #quiz-score {
     display: flex;
     align-items: center;
     justify-content: center;
+}*/
 
+/* difficulty and score */
+#quiz-difficulty,
+#quiz-score {
+    background-color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    border-radius: 8px;
+    margin: .5rem;
+    padding: 0.5rem;
 }
 
 /* Category */
@@ -225,16 +236,7 @@ main {
     border-radius: 8px;
 }
 
-/* difficulty */
-#quiz-difficulty {
-    background-color: var(--secondary-color);
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    color: #fff;
-    border-radius: 8px;
 
-}
 
 /* Question Number */
 #question-number h1 {
@@ -344,6 +346,30 @@ main {
     .quiz-footer .btn {
         font-size: 0.8rem;
     }
+    #quiz-difficulty {
+    font-size: 1rem;
+}
+    #quiz-score {
+        min-height: 62px;
+        text-align: center;
+        font-size: 1rem;
+        align-content: center;
+    }
+}
+/* medium devices (tablet, 375px and up) */
+@media screen and (min-width: 375px) {
+    #quiz-difficulty,
+    #quiz-score {
+        min-height: auto;
+    }
+}
+
+/* medium devices (tablet, 425px and up) */
+@media screen and (min-width: 425px) {
+    #quiz-difficulty,
+    #quiz-score {
+        min-height: auto;
+    }
 }
 
 /* medium devices (tablet, 768px and up) */
@@ -355,15 +381,12 @@ main {
         margin-top: 10px;
     }
     /* Make the quiz score and timer the same height for consistency */
-    #quiz-score {
-        min-height: auto;
-    }
     .quiz-header h1 {
         font-size: 2rem;
         margin-bottom: 1rem;
         font-weight: 700;
     }
-    #quiz-timer,
+    #quiz-difficulty,
     #quiz-score {
         font-size: 1.5rem;
         padding: 1rem;
