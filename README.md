@@ -127,108 +127,114 @@ After completing a quiz, players are shown a clear results page that provides in
 -   **Friendly Closing Note:** Thanks the player for participating, enhancing user engagement.
 
 > ![Quiz Results](./docs/screenshots/result_page.png)
+
 ## Wireframes
 
-Before moving to development, the team created wireframes for desktop, tablet, and mobile views.  
-These helped us quickly iterate on layout ideas, ensure responsiveness, and keep a consistent structure across devices.  
+Before moving to development, the team created wireframes for desktop, tablet, and mobile views.
+These helped us quickly iterate on layout ideas, ensure responsiveness, and keep a consistent structure across devices.
 
-**Desktop Wireframe**  
+**Desktop Wireframe**
 ![Desktop Wireframe](./docs/screenshots/desktop.png)
 
-**Mobile Wireframe**  
+**Mobile Wireframe**
 ![Mobile Wireframe](./docs/screenshots/mobile.png)
 
-**Tablet Wireframe**  
+**Tablet Wireframe**
 ![Tablet Wireframe](./docs/screenshots/tablet.png)
 
-These wireframes evolved into the final polished UI showcased above, but they gave us a solid foundation to work quickly and collaboratively.  
+These wireframes evolved into the final polished UI showcased above, but they gave us a solid foundation to work quickly and collaboratively.
 
 ## Project Management (Agile Board)
 
-To keep our team organized during the hackathon, we used a **Kanban board** on GitHub Projects.  
-This helped us prioritize tasks, track progress, and stay aligned as a team working under tight deadlines.  
+To keep our team organized during the hackathon, we used a **Kanban board** on GitHub Projects.
+This helped us prioritize tasks, track progress, and stay aligned as a team working under tight deadlines.
 
 **Board Columns:**
-- **To Do:** Tasks that were identified but not yet started.  
-- **In Progress:** Tasks currently being developed.  
-- **Done:** Completed features that were merged and tested.  
+
+-   **To Do:** Tasks that were identified but not yet started.
+-   **In Progress:** Tasks currently being developed.
+-   **Done:** Completed features that were merged and tested.
 
 **Prioritization:**
-- We used labels like *must-have*, *should-have*, and *could-have* to prioritize tasks.  
-- Critical features (e.g., Welcome Page, Accessibility) were tackled first to ensure core functionality.  
-- Enhancements and nice-to-have features were added later if time allowed.  
-> ![Kanban Board](./docs/screenshots/project_board.png)
+
+-   We used labels like _must-have_, _should-have_, and _could-have_ to prioritize tasks.
+-   Critical features (e.g., Welcome Page, Accessibility) were tackled first to ensure core functionality.
+-   Enhancements and nice-to-have features were added later if time allowed.
+    > ![Kanban Board](./docs/screenshots/project_board.png)
 
 ## Design Choices – Color Palette
 
-A consistent and accessible color scheme was chosen to balance playfulness with readability.  
-The palette combines warm, inviting tones with strong contrasts for key actions (like answering questions or starting the quiz).  
+A consistent and accessible color scheme was chosen to balance playfulness with readability.
+The palette combines warm, inviting tones with strong contrasts for key actions (like answering questions or starting the quiz).
 
 **Color Palette:**
-- **#231F20 – Raisin Black:** Used for primary text, ensuring high contrast.  
-- **#BB4430 – Persian Red:** Accent color for buttons and highlights (e.g., difficulty, category).  
-- **#7EBDC2 – Verdigris:** Background elements and score tracker for a calm contrast.  
-- **#F3DFA2 – Vanilla:** Light, warm background for sections to improve readability.  
-- **#EFE6DD – Linen:** Neutral base background to support a clean layout.  
-  
+
+-   **#231F20 – Raisin Black:** Used for primary text, ensuring high contrast.
+-   **#BB4430 – Persian Red:** Accent color for buttons and highlights (e.g., difficulty, category).
+-   **#7EBDC2 – Verdigris:** Background elements and score tracker for a calm contrast.
+-   **#F3DFA2 – Vanilla:** Light, warm background for sections to improve readability.
+-   **#EFE6DD – Linen:** Neutral base background to support a clean layout.
+
 > ![Color Palette](./docs/screenshots/colour_palette.webp)
 
 **Why these colors?**
-- Ensure **contrast** and **legibility** across devices.  
-- Create a **friendly, modern look** that reflects fun and challenge.  
-- Provide a clear **visual hierarchy**, where red signals importance and blue/neutral tones balance the interface.  
-To complement the color palette, we selected clean and modern fonts that enhance readability and provide a friendly look for the quiz.
+
+-   Ensure **contrast** and **legibility** across devices.
+-   Create a **friendly, modern look** that reflects fun and challenge.
+-   Provide a clear **visual hierarchy**, where red signals importance and blue/neutral tones balance the interface.
+    To complement the color palette, we selected clean and modern fonts that enhance readability and provide a friendly look for the quiz.
 
 **Fonts Used:**
-- **Primary Font – Montserrat**  
-  Used for headings and key UI elements.  
 
-- **Secondary Font – Nunito**  
-  Used for body text and supporting content. Nunito adds a softer, rounded feel that makes the quiz interface more approachable.  
+-   **Primary Font – Montserrat**
+    Used for headings and key UI elements.
 
-  ## Testing & Validation
+-   **Secondary Font – Nunito**
+    Used for body text and supporting content. Nunito adds a softer, rounded feel that makes the quiz interface more approachable.
+
+    ## Testing & Validation
 
 To ensure the quality and reliability of Quizia, we validated both code and user experience throughout the development process.
 
-- **HTML Validation:**  
-  Checked using the [W3C Markup Validator](https://validator.w3.org/).  
-  During the first validation run, a few errors were detected (e.g., unmatched `<li>` / `</ul>` tags and multiple `selected` attributes in `<select>` elements).  
-  These issues were corrected, and the final version now passes validation successfully.  
+-   **HTML Validation:**
+    Checked using the [W3C Markup Validator](https://validator.w3.org/).
+    During the first validation run, a few errors were detected (e.g., unmatched `<li>` / `</ul>` tags and multiple `selected` attributes in `<select>` elements).
+    These issues were corrected, and the final version now passes validation successfully.
 
-  > Example screenshot of initial HTML validation errors:  
-  > ![HTML Validation Errors](./docs/screenshots/html_erorrs.webp)  
+    > Example screenshot of initial HTML validation errors:
+    > ![HTML Validation Errors](./docs/screenshots/html_erorrs.webp)
 
-  > Screenshot after fixes (no errors):  
-  > ![HTML Validation Passed](./docs/screenshots/html_validation.png)  
+    > Screenshot after fixes (no errors):
+    > ![HTML Validation Passed](./docs/screenshots/html_validation.png)
 
-- **CSS Validation:**  
-  Verified with the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator/).  
-  Stylesheets passed validation without issues.  
+-   **CSS Validation:**
+    Verified with the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator/).
+    Stylesheets passed validation without issues.
 
-  > ![CSS Validation](./docs/screenshots/css_validation.png)  
+    > ![CSS Validation](./docs/screenshots/css_validation.png)
 
-- **Accessibility Testing:**  
-  Confirmed compliance with WCAG guidelines (color contrast, ARIA roles, semantic HTML).  
-  Tools used: Chrome Lighthouse and manual testing.  
+-   **Accessibility Testing:**
+    Confirmed compliance with WCAG guidelines (color contrast, ARIA roles, semantic HTML).
+    Tools used: Chrome Lighthouse and manual testing.
 
-  > ![Accessibility Test](./docs/screenshots/lighthouse.png)  
+    > ![Accessibility Test](./docs/screenshots/lighthouse.png)
 
-- **Responsive Testing:**  
-  Tested across multiple devices and screen sizes using Chrome DevTools and manual resizing.  
-  The layout adapts without loss of functionality.
+-   **Responsive Testing:**
+    Tested across multiple devices and screen sizes using Chrome DevTools and manual resizing.
+    The layout adapts without loss of functionality.
 
-   ## Deployment
+    ## Deployment
 
 Quizia is deployed via **GitHub Pages** to make the application easily accessible to all users directly in their browsers.
 
-- **Version Control:** The project was managed with Git and GitHub, using feature branches and Pull Requests to enable collaborative development.  
-- **Hosting Platform:** Deployed using **GitHub Pages**, a free and reliable hosting service that integrates seamlessly with GitHub repositories.  
-- **Deployment Procedure:**  
-  1. Push the latest code to the `main` branch.  
-  2. GitHub Pages automatically serves the content from the repository root.  
-  3. Ensure that `index.html` and all assets use **relative paths** so they load correctly on GitHub Pages.  
-- **Consistency:** The live deployment matches the development version, with all interactive features fully functional.  
-- **Maintenance:** Any new commit to `main` automatically updates the live site within minutes.  
+-   **Version Control:** The project was managed with Git and GitHub, using feature branches and Pull Requests to enable collaborative development.
+-   **Hosting Platform:** Deployed using **GitHub Pages**, a free and reliable hosting service that integrates seamlessly with GitHub repositories.
+-   **Deployment Procedure:**
+    1. Push the latest code to the `main` branch.
+    2. GitHub Pages automatically serves the content from the repository root.
+    3. Ensure that `index.html` and all assets use **relative paths** so they load correctly on GitHub Pages.
+-   **Consistency:** The live deployment matches the development version, with all interactive features fully functional.
+-   **Maintenance:** Any new commit to `main` automatically updates the live site within minutes.
 
 > 🔗 **Live Demo:** [Quizia Online](https://sourtarte.github.io/hackathon-quiz-game/)
 
@@ -239,10 +245,11 @@ Quizia is deployed via **GitHub Pages** to make the application easily accessibl
 To keep the project maintainable, we followed best practices in structuring and documenting code.
 
 **Practices:**
-- HTML, CSS, and JS separated into external files.  
-- Code divided into commented sections for readability.  
-- Consistent indentation, spacing, and file naming.  
-- Removed commented-out code before deployment.  
+
+-   HTML, CSS, and JS separated into external files.
+-   Code divided into commented sections for readability.
+-   Consistent indentation, spacing, and file naming.
+-   Removed commented-out code before deployment.
 
 **Project Structure:**
 Below is a screenshot of the project’s directory organization, ensuring clarity and maintainability:
@@ -251,35 +258,38 @@ Below is a screenshot of the project’s directory organization, ensuring clarit
 
 ---
 
-## Error Handling 
+## Error Handling
 
-The application gracefully handles invalid or empty inputs to ensure smooth gameplay.  
+The application gracefully handles invalid or empty inputs to ensure smooth gameplay.
 
-- **Name Input Validation:** The player must enter a name that contains at least **2 characters and 1 number**. If the criteria are not met, an error message is displayed and the quiz cannot start.  
-- **Quiz Flow Control:** Users cannot progress to the next stage without selecting an answer, ensuring the quiz logic stays consistent.  
-- **JavaScript Error Prevention:** Core functions include condition checks and loops that prevent unexpected behavior or runtime errors.  
-- **Console Safety:** During normal gameplay, the application runs without generating console errors or warnings, maintaining a clean development environment.  
-
----
----
-
-## Reflection on AI Usage  
-
-During development, the team leveraged **AI tools** to support the coding process, streamline debugging, and optimize performance:  
-
-- **Code Creation:** AI was used to generate the initial scaffolding for HTML. This allowed the team to dedicate more time to refining features and improving the user interface.  
-- **Debugging:** AI suggested fixes for merge conflicts and identified errors in the code, significantly reducing time spent on troubleshooting.  
-- **Performance Optimization:** AI provided recommendations to simplify CSS, resulting in cleaner and more efficient styling.  
-- **Documentation:** AI supported the drafting of this README, helping to ensure clarity, professional structure, and consistency.  
-
-**Impact on Workflow:**  
-The use of AI tools accelerated the development process during the hackathon, enabling the team to deliver a polished product under time pressure. Rather than replacing creativity, AI complemented teamwork by speeding up repetitive tasks and offering quick, practical solutions.  
+-   **Name Input Validation:** The player must enter a name that contains at least **2 characters and 1 number**. If the criteria are not met, an error message is displayed and the quiz cannot start.
+-   **Quiz Flow Control:** Users cannot progress to the next stage without selecting an answer, ensuring the quiz logic stays consistent.
+-   **JavaScript Error Prevention:** Core functions include condition checks and loops that prevent unexpected behavior or runtime errors.
+-   **Console Safety:** During normal gameplay, the application runs without generating console errors or warnings, maintaining a clean development environment.
 
 ---
-## Acknowledgements 🎉   
 
-Big thanks to:  
-- **Our team – Curtis, Michael, Dion & Aleksandra**, for turning ideas into reality under pressure.  
-- **Hackathon mentors & organizers**, for the challenge and guidance.  
-- **AI tools**, our silent teammate during crunch time.  
-- **Players of Quizia**, because a quiz is nothing without curious minds!  
+---
+
+## Reflection on AI Usage
+
+During development, the team leveraged **AI tools** to support the coding process, streamline debugging, and optimize performance:
+
+-   **Code Creation:** AI was used to generate the initial scaffolding for HTML. This allowed the team to dedicate more time to refining features and improving the user interface.
+-   **Debugging:** AI suggested fixes for merge conflicts and identified errors in the code, significantly reducing time spent on troubleshooting.
+-   **Performance Optimization:** AI provided recommendations to simplify CSS, resulting in cleaner and more efficient styling.
+-   **Documentation:** AI supported the drafting of this README, helping to ensure clarity, professional structure, and consistency.
+
+**Impact on Workflow:**
+The use of AI tools accelerated the development process during the hackathon, enabling the team to deliver a polished product under time pressure. Rather than replacing creativity, AI complemented teamwork by speeding up repetitive tasks and offering quick, practical solutions.
+
+---
+
+## Acknowledgements 🎉
+
+Big thanks to:
+
+-   **Our team – Curtis, Michael, Dion & Aleksandra**, for turning ideas into reality under pressure.
+-   **Hackathon mentors & organizers**, for the challenge and guidance.
+-   **AI tools**, our silent teammate during crunch time.
+-   **Players of Quizia**, because a quiz is nothing without curious minds!
