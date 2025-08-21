@@ -173,5 +173,3 @@ To complement the color palette, we selected clean and modern fonts that enhance
 
 - **Secondary Font – Nunito**  
   Used for body text and supporting content. Nunito adds a softer, rounded feel that makes the quiz interface more approachable.  
-
-
