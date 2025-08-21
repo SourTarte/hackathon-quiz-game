@@ -322,7 +322,92 @@ function endQuiz() {
     totalQuestions.innerHTML = `<strong>Questions Answered: ${totalQuestionsAsked}</strong>`;
 
     console.log(`Final Score: ${score}/${totalQuestionsAsked}`);
+
+     // 🎉 Confetti!
+  fireQuizConfetti();
 }
+
+function loadConfettiLib() {
+    if (window.confetti) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = "https://cdn.jsdelivr.net/npm/canvas-confetti/dist/confetti.browser.min.js";
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+    });
+}
+
+window.fireQuizConfetti = async function () {
+    // Respect users who prefer less motion
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+      try { await loadConfettiLib(); } catch { return; }
+      if (!window.confetti) return;
+
+    // Confetti animation from confetti.js.org
+    
+    // TIMING CONFIGURATION
+    // Set total duration to 10 seconds (10 * 1000 milliseconds)
+    const duration = 10 * 1000;
+    // Calculate when the animation should end (current time + duration)
+    const animationEnd = Date.now() + duration;
+    
+    // DEFAULT PARTICLE SETTINGS
+    // These settings control how the confetti particles behave
+    const defaults = { 
+        startVelocity: 30,  // How fast particles shoot out initially
+        spread: 360,        // Full 360-degree spread for natural falling motion
+        ticks: 60,          // How long particles stay visible (lifetime)
+        zIndex: 0           // Layer order (0 = behind other elements)
+    };
+
+    // UTILITY FUNCTION
+    // Helper function to generate random numbers within a specific range
+    function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    // MAIN ANIMATION LOOP
+    // This interval runs every 250ms (4 times per second) to create continuous confetti
+    const interval = setInterval(function() {
+        // Calculate how much time is left in the animation
+        const timeLeft = animationEnd - Date.now();
+
+        // STOP CONDITION
+        // If time is up, stop the animation by clearing the interval
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+
+        // DYNAMIC PARTICLE COUNT
+        // Start with many particles, gradually decrease as time runs out
+        // Formula: 50 particles * (remaining time / total time)
+        // This creates a "fading out" effect over the 10 seconds
+        const particleCount = 50 * (timeLeft / duration);
+
+        // LEFT SIDE CONFETTI BURST
+        // Creates confetti from the left side of the screen (10-30% from left edge)
+        // Y position is slightly above screen (negative value) so particles fall naturally
+        confetti(
+            Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+            })
+        );
+        
+        // RIGHT SIDE CONFETTI BURST
+        // Creates confetti from the right side of the screen (70-90% from left edge)
+        // Same Y positioning for natural falling effect
+        confetti(
+            Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+            })
+        );
+    }, 250); // Repeat every 250 milliseconds
+};
 
 function selectOption() {
     // get reference to the container element that holds all quiz option list items
