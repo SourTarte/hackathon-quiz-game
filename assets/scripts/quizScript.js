@@ -282,7 +282,7 @@ function displayDifficulty() {
     const difficultyElement = document.getElementById("quiz-difficulty");
 
     // Set the innerHTML of the element to display the difficulty name
-    difficultyElement.innerHTML = `<h3>Difficulty: ${difficultyName}</h3>`;
+    difficultyElement.innerHTML = `Difficulty: ${difficultyName}`;
     }
 
 /**
