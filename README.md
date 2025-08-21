@@ -248,3 +248,16 @@ To keep the project maintainable, we followed best practices in structuring and 
 Below is a screenshot of the project’s directory organization, ensuring clarity and maintainability:
 
 ![Project Structure](docs/screenshots/project_structure.png)
+
+---
+
+## Error Handling 
+
+The application gracefully handles invalid or empty inputs to ensure smooth gameplay.  
+
+- **Name Input Validation:** The player must enter a name that contains at least **2 characters and 1 number**. If the criteria are not met, an error message is displayed and the quiz cannot start.  
+- **Quiz Flow Control:** Users cannot progress to the next stage without selecting an answer, ensuring the quiz logic stays consistent.  
+- **JavaScript Error Prevention:** Core functions include condition checks and loops that prevent unexpected behavior or runtime errors.  
+- **Console Safety:** During normal gameplay, the application runs without generating console errors or warnings, maintaining a clean development environment.  
+
+---
