@@ -95,7 +95,7 @@ function displayUsername (username) {
  * receives the result as a new variable, data.
  */
 async function loadQuestion () {
-  displayCategory(allQuestions[totalQuestionsAsked].category)
+  
 
   if (selectedAnswer !== '') {
     document
@@ -131,6 +131,7 @@ async function loadQuestion () {
 
     allQuestions.push(...data.results) // Add new questions to our global array
     displayQuestion(allQuestions[totalQuestionsAsked])
+    displayCategory(allQuestions[totalQuestionsAsked].category)
 
     const dataPreview = allQuestions[totalQuestionsAsked]
     //dataPreview.correct_answer = null; // anticheat, comment out this line to show correct answer in console messages
