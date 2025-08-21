@@ -261,3 +261,25 @@ The application gracefully handles invalid or empty inputs to ensure smooth game
 - **Console Safety:** During normal gameplay, the application runs without generating console errors or warnings, maintaining a clean development environment.  
 
 ---
+---
+
+## Reflection on AI Usage  
+
+During development, the team leveraged **AI tools** to support the coding process, streamline debugging, and optimize performance:  
+
+- **Code Creation:** AI was used to generate the initial scaffolding for HTML. This allowed the team to dedicate more time to refining features and improving the user interface.  
+- **Debugging:** AI suggested fixes for merge conflicts and identified errors in the code, significantly reducing time spent on troubleshooting.  
+- **Performance Optimization:** AI provided recommendations to simplify CSS, resulting in cleaner and more efficient styling.  
+- **Documentation:** AI supported the drafting of this README, helping to ensure clarity, professional structure, and consistency.  
+
+**Impact on Workflow:**  
+The use of AI tools accelerated the development process during the hackathon, enabling the team to deliver a polished product under time pressure. Rather than replacing creativity, AI complemented teamwork by speeding up repetitive tasks and offering quick, practical solutions.  
+
+---
+## Acknowledgements 🎉   
+
+Big thanks to:  
+- **Our team – Curtis, Michael, Dion & Aleksandra**, for turning ideas into reality under pressure.  
+- **Hackathon mentors & organizers**, for the challenge and guidance.  
+- **AI tools**, our silent teammate during crunch time.  
+- **Players of Quizia**, because a quiz is nothing without curious minds!  
