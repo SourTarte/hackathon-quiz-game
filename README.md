@@ -180,8 +180,39 @@ The palette combines warm, inviting tones with strong contrasts for key actions 
 To complement the color palette, we selected clean and modern fonts that enhance readability and provide a friendly look for the quiz.
 
 **Fonts Used:**
-- **Primary Font – Inter**  
-  Used for headings and key UI elements. Inter is modern, geometric, and highly legible across screen sizes.  
+- **Primary Font – Montserrat**  
+  Used for headings and key UI elements.  
 
 - **Secondary Font – Nunito**  
   Used for body text and supporting content. Nunito adds a softer, rounded feel that makes the quiz interface more approachable.  
+
+  ## Testing & Validation
+
+To ensure the quality and reliability of Quizia, we validated both code and user experience throughout the development process.
+
+- **HTML Validation:**  
+  Checked using the [W3C Markup Validator](https://validator.w3.org/).  
+  During the first validation run, a few errors were detected (e.g., unmatched `<li>` / `</ul>` tags and multiple `selected` attributes in `<select>` elements).  
+  These issues were corrected, and the final version now passes validation successfully.  
+
+  > Example screenshot of initial HTML validation errors:  
+  > ![HTML Validation Errors](./docs/screenshots/html_erorrs.webp)  
+
+  > Screenshot after fixes (no errors):  
+  > ![HTML Validation Passed](./docs/screenshots/html_validation.png)  
+
+- **CSS Validation:**  
+  Verified with the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator/).  
+  Stylesheets passed validation without issues.  
+
+  > ![CSS Validation](./docs/screenshots/css_validation.png)  
+
+- **Accessibility Testing:**  
+  Confirmed compliance with WCAG guidelines (color contrast, ARIA roles, semantic HTML).  
+  Tools used: Chrome Lighthouse and manual testing.  
+
+  > ![Accessibility Test](./docs/screenshots/lighthouse.png)  
+
+- **Responsive Testing:**  
+  Tested across multiple devices and screen sizes using Chrome DevTools and manual resizing.  
+  The layout adapts without loss of functionality.  
