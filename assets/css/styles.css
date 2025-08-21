@@ -1,5 +1,5 @@
 /* Google fonts import */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
 
 body {
     height: 100vh;
@@ -8,7 +8,12 @@ body {
     color: var(--text-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--primary-font);
     font-weight: 400 !important;
 }
@@ -20,7 +25,7 @@ p {
 
 /* General styles */
 :root {
-    --primary-font: "Montserrat", 'sans-serif';
+    --primary-font: "Montserrat", "sans-serif";
     --secondary-font: "Nunito", system-ui, sans-serif;
     /* TODO(team): define colors*/
     --primary-color: #7ebdc2;
@@ -516,7 +521,6 @@ main {
         align-content: center;
     }
 }
-
 
 /* medium devices (tablet, 375px and up) */
 @media screen and (min-width: 375px) {
