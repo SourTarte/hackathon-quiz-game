@@ -120,10 +120,10 @@ async function loadQuestion() {
         const data = await result.json();
         console.log("API Response:", data);
 
-        // Check for the main error: not enough questions available
-        if (data.response_code === 1) {
+        // Check for the main errors
+        if (data.response_code === 1 || data.response_code === 4) {
             displayAPIError(
-                "Not enough questions available for your settings. Try fewer questions or different options."
+                "Not enough new questions available for your settings. Try different quiz options. We are adding new questions on a regular basis, so bare with us!"
             );
             return;
         }
