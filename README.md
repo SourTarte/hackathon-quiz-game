@@ -121,7 +121,7 @@ After completing a quiz, players are shown a clear results page that provides in
 **Key Features:**
 
 -   **Congratulations Message:** Positive reinforcement for completing the quiz.
--   **Final Score:** Displays the player’s score (e.g., _Adam32, your Final Score is: 3_).
+-   **Final Score:** Displays the player’s score.
 -   **Questions Answered:** Shows how many questions were attempted out of the total (e.g., _5 Questions_).
 -   **Replay Option:** A **Play Again** button encourages replayability by letting users immediately start another quiz.
 -   **Friendly Closing Note:** Thanks the player for participating, enhancing user engagement.
