@@ -182,7 +182,7 @@ main {
 /* Header */
 
 #quiz-header {
-    margin-top: 0%
+    margin-top: 0%;
 }
 .quiz-header h1 {
     font-size: 1.5rem;
@@ -222,7 +222,7 @@ main {
     margin-bottom: 1rem;
     color: var(--text-color);
     border-radius: 8px;
-    margin: .5rem;
+    margin: 0.5rem;
     padding: 0.5rem;
 }
 
@@ -235,8 +235,6 @@ main {
     color: #fff;
     border-radius: 8px;
 }
-
-
 
 /* Question Number */
 #question-number h1 {
@@ -347,8 +345,8 @@ main {
         font-size: 0.8rem;
     }
     #quiz-difficulty {
-    font-size: 1rem;
-}
+        font-size: 1rem;
+    }
     #quiz-score {
         min-height: 62px;
         text-align: center;
@@ -410,7 +408,7 @@ main {
 /* modal */
 
 #quizConfigModal {
-    margin-top: 16rem;
+    margin-top: 3rem;
 }
 
 /* Large laptop devices (large laptop, 1440px and up) */
