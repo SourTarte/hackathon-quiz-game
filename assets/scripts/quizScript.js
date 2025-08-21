@@ -339,14 +339,10 @@ function endQuiz () {
   if (totalQuestionsAsked == 0) {
     totalQuestions.innerHTML = `<strong>Questions Answered: ${totalQuestionsAsked}</strong>`
   } else {
-    {
       totalQuestions.innerHTML = `<strong>Questions Answered: ${
         totalQuestionsAsked - 1
       }</strong>`
     }
-
-    console.log(`Final Score: ${score}/${totalQuestionsAsked}`)
-  }
     console.log(`Final Score: ${score}/${totalQuestionsAsked}`);
 
     // 🎉 Confetti!
