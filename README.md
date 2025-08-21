@@ -127,3 +127,61 @@ After completing a quiz, players are shown a clear results page that provides in
 -   **Friendly Closing Note:** Thanks the player for participating, enhancing user engagement.
 
 > ![Quiz Results](./docs/screenshots/result_page.png)
+## Wireframes
+
+Before moving to development, the team created wireframes for desktop, tablet, and mobile views.  
+These helped us quickly iterate on layout ideas, ensure responsiveness, and keep a consistent structure across devices.  
+
+**Desktop Wireframe**  
+![Desktop Wireframe](./docs/screenshots/desktop.png)
+
+**Mobile Wireframe**  
+![Mobile Wireframe](./docs/screenshots/mobile.png)
+
+**Tablet Wireframe**  
+![Tablet Wireframe](./docs/screenshots/tablet.png)
+
+These wireframes evolved into the final polished UI showcased above, but they gave us a solid foundation to work quickly and collaboratively.  
+
+## Project Management (Agile Board)
+
+To keep our team organized during the hackathon, we used a **Kanban board** on GitHub Projects.  
+This helped us prioritize tasks, track progress, and stay aligned as a team working under tight deadlines.  
+
+**Board Columns:**
+- **To Do:** Tasks that were identified but not yet started.  
+- **In Progress:** Tasks currently being developed.  
+- **Done:** Completed features that were merged and tested.  
+
+**Prioritization:**
+- We used labels like *must-have*, *should-have*, and *could-have* to prioritize tasks.  
+- Critical features (e.g., Welcome Page, Accessibility) were tackled first to ensure core functionality.  
+- Enhancements and nice-to-have features were added later if time allowed.  
+> ![Kanban Board](./docs/screenshots/project_board.png)
+
+## Design Choices – Color Palette
+
+A consistent and accessible color scheme was chosen to balance playfulness with readability.  
+The palette combines warm, inviting tones with strong contrasts for key actions (like answering questions or starting the quiz).  
+
+**Color Palette:**
+- **#231F20 – Raisin Black:** Used for primary text, ensuring high contrast.  
+- **#BB4430 – Persian Red:** Accent color for buttons and highlights (e.g., difficulty, category).  
+- **#7EBDC2 – Verdigris:** Background elements and score tracker for a calm contrast.  
+- **#F3DFA2 – Vanilla:** Light, warm background for sections to improve readability.  
+- **#EFE6DD – Linen:** Neutral base background to support a clean layout.  
+  
+> ![Color Palette](./docs/screenshots/colour_palette.webp)
+
+**Why these colors?**
+- Ensure **contrast** and **legibility** across devices.  
+- Create a **friendly, modern look** that reflects fun and challenge.  
+- Provide a clear **visual hierarchy**, where red signals importance and blue/neutral tones balance the interface.  
+To complement the color palette, we selected clean and modern fonts that enhance readability and provide a friendly look for the quiz.
+
+**Fonts Used:**
+- **Primary Font – Inter**  
+  Used for headings and key UI elements. Inter is modern, geometric, and highly legible across screen sizes.  
+
+- **Secondary Font – Nunito**  
+  Used for body text and supporting content. Nunito adds a softer, rounded feel that makes the quiz interface more approachable.  
