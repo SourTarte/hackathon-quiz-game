@@ -228,7 +228,7 @@ function displayQuestion (data) {
       type === '&type=multiple' &&
       optionButtons[i].hasAttribute('hidden')
     ) {
-      setAttribute('hidden', false)
+      optionButtons[i].setAttribute('hidden', false)
     }
 
     if (!optionButtons[i].hasAttribute('hidden')) {
@@ -268,9 +268,6 @@ function updateAnswerDisplay (selectedAnswer, correctAnswer) {
     const questionAnswer = document.getElementById('answer')
     questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</h2>`
   }
-
-  // Update the answer text
-  answerDisplay = document.getElementById('answer')
 }
 
 function displayCategory (categoryName) {
