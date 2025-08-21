@@ -319,9 +319,18 @@ function endQuiz() {
 
     // Display total questions answered
     const totalQuestions = document.getElementById("final-questions");
+
+    if (totalQuestionsAsked == 0) {
     totalQuestions.innerHTML = `<strong>Questions Answered: ${totalQuestionsAsked}</strong>`;
+    } else {
+        {
+            totalQuestions.innerHTML = `<strong>Questions Answered: ${
+                totalQuestionsAsked - 1
+            }</strong>`;
+        }
 
     console.log(`Final Score: ${score}/${totalQuestionsAsked}`);
+    }
 }
 
 function selectOption() {
