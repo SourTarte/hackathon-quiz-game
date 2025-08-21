@@ -324,7 +324,7 @@ function endQuiz () {
   quizSection.setAttribute('hidden', true)
 
   // Show results page
-  const resultsContainer = document.getElementById('main-results-container')
+  const resultsContainer = document.getElementById('main-results-section')
   resultsContainer.removeAttribute('hidden')
 
   // Display the final score
