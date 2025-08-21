@@ -317,29 +317,6 @@ main {
     margin-top: 0;
 }
 
-/* Score
-#quiz-score-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-}
-/*
-#quiz-timer,
-#quiz-score {
-    background-color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    margin: 0.5rem;
-}*/
-/*
-#quiz-score {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}*/
-
 /* difficulty and score */
 #quiz-difficulty,
 #quiz-score {
