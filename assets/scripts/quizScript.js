@@ -190,8 +190,12 @@ function displayQuestion(data) {
         !data.correct_answer ||
         !data.incorrect_answers
     ) {
+<<<<<<< HEAD
         console.error("Invalid question data:", data);
         return;
+=======
+      optionButtons[i].setAttribute('hidden', false)
+>>>>>>> 01140be (fix: linted code, removed unused variables)
     }
 
     //sets the answer variables to the proper values via the returned API data
@@ -271,6 +275,7 @@ function updateAnswerDisplay(selectedAnswer, correctAnswer) {
     answerDisplay = document.getElementById("answer");
 }
 
+<<<<<<< HEAD
 function displayCategory(categoryName) {
     // get the user-friendly category name from sessionStorage, instead of a number
 
@@ -279,6 +284,17 @@ function displayCategory(categoryName) {
 
     // Set the innerHTML of the element to display the category name
     categoryElement.innerHTML = `<h3>Category: ${categoryName}</h3>`;
+=======
+function updateAnswerDisplay (selectedAnswer, correctAnswer) {
+  // Display the result based on whether the answer is correct or not
+  if (selectedAnswer === correctAnswer) {
+    const questionAnswer = document.getElementById('answer')
+    questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-check"></i> Correct Answer!</h2>`
+  } else {
+    const questionAnswer = document.getElementById('answer')
+    questionAnswer.innerHTML = `<h2><i class="fa-regular fa-circle-xmark"></i> Incorrect. Correct answer: ${correctAnswer}</h2>`
+  }
+>>>>>>> 01140be (fix: linted code, removed unused variables)
 }
 
 function displayDifficulty() {
