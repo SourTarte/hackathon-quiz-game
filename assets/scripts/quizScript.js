@@ -328,7 +328,9 @@ function endQuiz() {
     // Display total questions answered
     const totalQuestions = document.getElementById("final-questions");
 
-    if (totalQuestionsAsked == 0) {
+    if (totalQuestionsAsked === 0) {
+        totalQuestions.innerHTML = `<strong>Questions Answered: ${totalQuestionsAsked}</strong>`;
+    } else if (totalQuestionsAsked === parseInt(totalQuestionAmount)) {
         totalQuestions.innerHTML = `<strong>Questions Answered: ${totalQuestionsAsked}</strong>`;
     } else {
         totalQuestions.innerHTML = `<strong>Questions Answered: ${
