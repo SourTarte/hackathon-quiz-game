@@ -109,10 +109,120 @@ main {
 /*results page styles*/
 .quiz-results {
     background-color: var(--highlight-color-light);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    padding: 3rem 2rem;
+    margin: 1rem;
+    border: 2px solid rgba(126, 189, 194, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-results::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    border-radius: 16px 16px 0 0;
+}
+
+.quiz-results .quiz-title {
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-final-message {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.results-body p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.results-body .completion-message {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 1.5rem 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.results-body .results-intro {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 1.2rem 0 2rem 0;
+    letter-spacing: 0.2px;
+}
+
+.results-body .score {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        rgba(126, 189, 194, 0.8)
+    );
+    color: white;
+    padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin: 1;
+    font-size: 1.4rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 16px rgba(126, 189, 194, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.results-body .questions {
+    background: rgba(243, 223, 162, 0.6);
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.results-body .thank-you-message {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin: 2rem 0 1.5rem 0;
+    font-style: italic;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.3px;
+}
+
+.quiz-results .play-Again-btn .btn {
+    background: linear-gradient(135deg, var(--secondary-color), #a03828);
+    border: none;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(187, 68, 48, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.quiz-results .play-Again-btn .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(187, 68, 48, 0.4);
+    background: linear-gradient(135deg, #a03828, var(--secondary-color));
 }
 
 /*  modal  */
@@ -182,7 +292,7 @@ main {
 /* Header */
 
 #quiz-header {
-    margin-top: 0%
+    margin-top: 0%;
 }
 .quiz-header h1 {
     font-size: 1.5rem;
@@ -191,7 +301,7 @@ main {
     margin-top: 0;
 }
 
-/* Score and Timer */
+/* Score
 #quiz-score-container {
     display: flex;
     justify-content: space-between;
@@ -199,20 +309,31 @@ main {
     font-size: 1rem;
     font-weight: 600;
 }
-
+/*
 #quiz-timer,
 #quiz-score {
     background-color: var(--primary-color);
     padding: 0.5rem 1rem;
     border-radius: 6px;
     margin: 0.5rem;
-}
-
+}*/
+/*
 #quiz-score {
     display: flex;
     align-items: center;
     justify-content: center;
+}*/
 
+/* difficulty and score */
+#quiz-difficulty,
+#quiz-score {
+    background-color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    border-radius: 8px;
+    margin: 0.5rem;
+    padding: 0.5rem;
 }
 
 /* Category */
@@ -223,17 +344,6 @@ main {
     margin-bottom: 1rem;
     color: #fff;
     border-radius: 8px;
-}
-
-/* difficulty */
-#quiz-difficulty {
-    background-color: var(--secondary-color);
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    color: #fff;
-    border-radius: 8px;
-
 }
 
 /* Question Number */
@@ -340,9 +450,60 @@ main {
     }
     .quiz-results {
         margin-top: 160px;
+        padding: 2rem 1.5rem;
+    }
+    .quiz-results .quiz-title {
+        font-size: 1.8rem;
+    }
+    .quiz-final-message {
+        font-size: 1.6rem;
+    }
+    .results-body p {
+        font-size: 1rem;
+    }
+    .results-body .completion-message {
+        font-size: 1.1rem;
+    }
+    .results-body .results-intro {
+        font-size: 1.05rem;
+    }
+    .results-body .score {
+        font-size: 0.7em;
+        padding: 1.2rem;
+    }
+    .results-body .questions {
+        font-size: 1.1rem;
+    }
+    .results-body .thank-you-message {
+        font-size: 1.2rem;
     }
     .quiz-footer .btn {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        padding: 10px 24px;
+    }
+    #quiz-difficulty {
+        font-size: 1rem;
+    }
+    #quiz-score {
+        min-height: 62px;
+        text-align: center;
+        font-size: 1rem;
+        align-content: center;
+    }
+}
+/* medium devices (tablet, 375px and up) */
+@media screen and (min-width: 375px) {
+    #quiz-difficulty,
+    #quiz-score {
+        min-height: auto;
+    }
+}
+
+/* medium devices (tablet, 425px and up) */
+@media screen and (min-width: 425px) {
+    #quiz-difficulty,
+    #quiz-score {
+        min-height: auto;
     }
 }
 
@@ -355,15 +516,16 @@ main {
         margin-top: 10px;
     }
     /* Make the quiz score and timer the same height for consistency */
-    #quiz-score {
-        min-height: auto;
-    }
     .quiz-header h1 {
         font-size: 2rem;
         margin-bottom: 1rem;
         font-weight: 700;
     }
-    #quiz-timer,
+    .results-body .score {
+        font-size: 1.2rem;
+        padding: 1.2rem;
+    }
+    #quiz-difficulty,
     #quiz-score {
         font-size: 1.5rem;
         padding: 1rem;
@@ -382,12 +544,40 @@ main {
         height: 95vh;
         margin-top: 10px;
     }
+    .quiz-results {
+        margin-top: 40px;
+        padding: 3.5rem;
+        max-width: 800px;
+    }
+    .quiz-results .quiz-title {
+        font-size: 2.5rem;
+    }
+    .quiz-final-message {
+        font-size: 2.2rem;
+    }
+    .results-body .completion-message {
+        font-size: 1.5rem;
+    }
+    .results-body .results-intro {
+        font-size: 1.4rem;
+    }
+    .results-body .score {
+        font-size: 1.6rem;
+        padding: 2rem;
+    }
+    .results-body .questions {
+        font-size: 1.3rem;
+        padding: 1.2rem;
+    }
+    .results-body .thank-you-message {
+        font-size: 1.6rem;
+    }
 }
 
 /* modal */
 
 #quizConfigModal {
-    margin-top: 16rem;
+    margin-top: 3rem;
 }
 
 /* Large laptop devices (large laptop, 1440px and up) */
@@ -400,7 +590,81 @@ main {
         align-items: center;
         margin-left: 95px;
     }
+    .quiz-results {
+        margin-top: 30px;
+        padding: 4rem;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .quiz-results .quiz-title {
+        font-size: 2.8rem;
+    }
+    .quiz-final-message {
+        font-size: 2.4rem;
+    }
 }
+
+/* Animation keyframes for results */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply animations to results elements */
+.quiz-results {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.quiz-results .quiz-title {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.quiz-final-message {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.results-body .completion-message {
+    animation: fadeInUp 0.6s ease-out 0.6s both;
+}
+
+.results-body .results-intro {
+    animation: fadeInUp 0.6s ease-out 0.8s both;
+}
+
+.results-body .score {
+    animation: scaleIn 0.6s ease-out 1s both;
+}
+
+.results-body .questions {
+    animation: fadeInUp 0.6s ease-out 1.2s both;
+}
+
+.results-body .thank-you-message {
+    animation: fadeInUp 0.6s ease-out 1.4s both;
+}
+
+.play-Again-btn {
+    animation: fadeInUp 0.6s ease-out 1.6s both;
+}
+
 .hero-section {
     background-image: url("../images/background.jpg");
     background-size: cover;
